@@ -1,0 +1,137 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "AT Sprint 3B.1"
+Date "2021-12-01"
+Rev "1"
+Comp ""
+Comment1 "Designer: 史蒂文·韦伯, KD1JV"
+Comment2 "Modified: James Cheng, BH4DKR"
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Jack-DC J?
+U 1 1 61A790BD
+P 1250 1400
+F 0 "J?" H 1307 1725 50  0000 C CNN
+F 1 "Jack-DC" H 1307 1634 50  0000 C CNN
+F 2 "" H 1300 1360 50  0001 C CNN
+F 3 "~" H 1300 1360 50  0001 C CNN
+	1    1250 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 61A7A1BD
+P 1550 1850
+F 0 "#PWR?" H 1550 1600 50  0001 C CNN
+F 1 "GNDREF" H 1555 1677 50  0000 C CNN
+F 2 "" H 1550 1850 50  0001 C CNN
+F 3 "" H 1550 1850 50  0001 C CNN
+	1    1550 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C46
+U 1 1 61A7D238
+P 1850 1500
+F 0 "C46" H 1650 1550 50  0000 L CNN
+F 1 ".1uF" H 1650 1450 50  0000 L CNN
+F 2 "" H 1850 1500 50  0001 C CNN
+F 3 "~" H 1850 1500 50  0001 C CNN
+	1    1850 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 1500 1550 1750
+Wire Wire Line
+	1850 1600 1850 1750
+Wire Wire Line
+	1850 1750 1550 1750
+Connection ~ 1550 1750
+Wire Wire Line
+	1550 1750 1550 1850
+Wire Wire Line
+	1550 1300 1850 1300
+Wire Wire Line
+	1850 1400 1850 1300
+Connection ~ 1850 1300
+$Comp
+L CraftsmanICs:S-812C U9
+U 1 1 61A7F2E0
+P 2950 1350
+F 0 "U9" H 3200 1550 50  0000 C CNN
+F 1 "812C50" H 2700 1150 50  0000 C CNN
+F 2 "" H 2950 1350 50  0001 C CNN
+F 3 "" H 2950 1350 50  0001 C CNN
+	1    2950 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 61A7FD53
+P 2950 1650
+F 0 "#PWR?" H 2950 1400 50  0001 C CNN
+F 1 "GNDREF" H 2955 1477 50  0000 C CNN
+F 2 "" H 2950 1650 50  0001 C CNN
+F 3 "" H 2950 1650 50  0001 C CNN
+	1    2950 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 1600 2950 1650
+$Comp
+L CraftsmanICs:S-812C U10
+U 1 1 61A8029F
+P 2950 2100
+F 0 "U10" H 3200 2300 50  0000 C CNN
+F 1 "812C35" H 2700 1900 50  0000 C CNN
+F 2 "" H 2950 2100 50  0001 C CNN
+F 3 "" H 2950 2100 50  0001 C CNN
+	1    2950 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2300 1300 2450 1300
+Wire Wire Line
+	1850 1300 2000 1300
+$Comp
+L Device:D_Schottky D1
+U 1 1 61A7BE57
+P 2150 1300
+F 0 "D1" H 2150 1083 50  0000 C CNN
+F 1 "SS13" H 2150 1174 50  0000 C CNN
+F 2 "" H 2150 1300 50  0001 C CNN
+F 3 "~" H 2150 1300 50  0001 C CNN
+	1    2150 1300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2600 2050 2450 2050
+Wire Wire Line
+	2450 2050 2450 1300
+Connection ~ 2450 1300
+Wire Wire Line
+	2450 1300 2600 1300
+$Comp
+L power:GNDREF #PWR?
+U 1 1 61A81ADC
+P 2950 2400
+F 0 "#PWR?" H 2950 2150 50  0001 C CNN
+F 1 "GNDREF" H 2955 2227 50  0000 C CNN
+F 2 "" H 2950 2400 50  0001 C CNN
+F 3 "" H 2950 2400 50  0001 C CNN
+	1    2950 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 2350 2950 2400
+Wire Wire Line
+	2450 1300 2450 900 
+Text GLabel 2450 900  1    50   Input ~ 0
+V+
+$EndSCHEMATC

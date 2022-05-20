@@ -1,0 +1,2582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\cheng\Documents\MyKicads\ATS3B1\AT Sprint 3B.1\AT Sprint 3B.1.kicad_sch</source>
+    <date>2022/5/15 20:00:22</date>
+    <tool>Eeschema (6.0.5)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>ATS3B1-MCU/DDS/TX</title>
+        <company/>
+        <rev>1</rev>
+        <date>2021-12-01</date>
+        <source>AT Sprint 3B.1.kicad_sch</source>
+        <comment number="1" value="Designer: 史蒂文·韦伯, KD1JV"/>
+        <comment number="2" value="Modified: James Cheng, BH4DKR"/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>ATS3B1-MCU-DDS-TX.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>ATS3B1-RECEIVER-AUDIO.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C23">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>669ad538-0f51-4179-99d1-890c1fdbc984</tstamps>
+    </comp>
+    <comp ref="C24">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>02372d3e-35a7-4cf2-ad27-f9146b70cb8a</tstamps>
+    </comp>
+    <comp ref="C25">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>c5d8f47b-e978-4a1f-bb9e-666030419c5d</tstamps>
+    </comp>
+    <comp ref="C26">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>a60a0937-3cbf-489e-97a2-1bc36baaf624</tstamps>
+    </comp>
+    <comp ref="C27">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>cfb35962-48db-4bc1-89c0-89dd5ba11f2e</tstamps>
+    </comp>
+    <comp ref="C28">
+      <value>22p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>5c113957-c1fa-4867-9784-b1f571201819</tstamps>
+    </comp>
+    <comp ref="C29">
+      <value>22p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>689558eb-9db9-49b0-8441-9ef83efc2f3d</tstamps>
+    </comp>
+    <comp ref="C30">
+      <value>0.0pF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>8bdccc65-3943-40b8-9e09-2e1a14c648e5</tstamps>
+    </comp>
+    <comp ref="C31">
+      <value>47p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>8c179c5e-70db-448d-b570-028d400ccda3</tstamps>
+    </comp>
+    <comp ref="C32">
+      <value>0.0pF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>419762cf-d3bd-43cb-9a7c-909c751340f6</tstamps>
+    </comp>
+    <comp ref="C33">
+      <value>22p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>15c9d727-8569-4e59-9768-9b88cf6b262b</tstamps>
+    </comp>
+    <comp ref="C35">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>9206a194-5ecf-41fd-a207-c420881f85ab</tstamps>
+    </comp>
+    <comp ref="C36">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>6f304fcf-b485-4f01-9d72-25d56173acb1</tstamps>
+    </comp>
+    <comp ref="C37">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>ea6abeda-e41e-435f-bd0a-f64886b8d932</tstamps>
+    </comp>
+    <comp ref="C38">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>d72663b1-b3f9-403f-9d46-cf5af44a0d57</tstamps>
+    </comp>
+    <comp ref="C39">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>d9f4214b-e817-41db-a1cc-c0f425c2f1a7</tstamps>
+    </comp>
+    <comp ref="C40">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>59a06a7a-2a6f-4288-aaea-df3e7adf41b8</tstamps>
+    </comp>
+    <comp ref="C41">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>d7c649ee-d1ad-4f3c-a0f6-990d5a2e6a60</tstamps>
+    </comp>
+    <comp ref="C42">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>bd97d4a9-f9e5-4337-9fd4-fbb235b691ed</tstamps>
+    </comp>
+    <comp ref="C43">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>8ff76516-d63c-4542-9284-9d57bd979790</tstamps>
+    </comp>
+    <comp ref="C44">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>9347e855-4398-44f9-9f90-5677d9f4644b</tstamps>
+    </comp>
+    <comp ref="C45">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>e7875dbc-523a-4d5a-a58b-2d85f2c5514e</tstamps>
+    </comp>
+    <comp ref="C46">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>b0dafd31-eb10-426c-a1e9-6262bed17786</tstamps>
+    </comp>
+    <comp ref="C47">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>4548b2a9-1505-4dc0-a866-30058405d0a2</tstamps>
+    </comp>
+    <comp ref="C48">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>72859fb1-f70f-40f8-9cf8-433f5c804120</tstamps>
+    </comp>
+    <comp ref="C49">
+      <value>.001uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>616def21-ba34-4afd-8c45-b93391bb8d31</tstamps>
+    </comp>
+    <comp ref="C52">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>4800aea8-0b7e-41b7-95b9-d0db2ef98fea</tstamps>
+    </comp>
+    <comp ref="C56">
+      <value>47uF/16V</value>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>6711cf1d-d834-487c-834d-774165fe7474</tstamps>
+    </comp>
+    <comp ref="C57">
+      <value>22uF/16V</value>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>a76e3418-503d-4e93-96d9-4305fc8a454e</tstamps>
+    </comp>
+    <comp ref="C58">
+      <value>100uF/16V</value>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>863c3ee0-b952-442f-b1a6-b49598d1d50f</tstamps>
+    </comp>
+    <comp ref="C59">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>4cff4dc8-8c79-4690-9816-8f358a09d845</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>SS13</value>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>8be7e101-6e05-4c6d-b126-52ec2f5ecd36</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>1N4756A</value>
+      <footprint>Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.vishay.com/docs/85816/1n4728a.pdf</datasheet>
+      <libsource lib="Diode" part="1N47xxA" description="1300mW Silicon planar power Zener diodes, DO-41"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>1a89fb8e-bdf3-443f-a7ca-9cfb078031d7</tstamps>
+    </comp>
+    <comp ref="D4">
+      <value>5.1V</value>
+      <footprint>Diode_SMD:D_SOD-123F</footprint>
+      <datasheet>https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzt52b2v4.pdf</datasheet>
+      <libsource lib="Diode" part="BZT52Bxx" description="500mW Zener Diode, SOD-123F"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>0ac89ca7-4c40-44cd-8d40-74261c1efd95</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>FilterBoard</value>
+      <libsource lib="Connector" part="Conn_01x06_Female" description="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>ad52ec23-03d1-417c-9e7a-7403cfbd9c99</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Jack-DC</value>
+      <libsource lib="Connector" part="Jack-DC" description="DC Barrel Jack"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>9625f6a3-7bb8-4a2e-ba92-3e29ebc5837c</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>PADDLE IN</value>
+      <libsource lib="Connector" part="AudioJack3" description="Audio Jack, 3 Poles (Stereo / TRS)"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>05000c74-5dba-4e7b-848c-94c5c4c5da03</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>IC-PROGRAMMING</value>
+      <libsource lib="Connector" part="Conn_01x07_Female" description="Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>9d338592-b33f-49ae-b0c0-218a1d3664d9</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>ANTENNA</value>
+      <datasheet> ~</datasheet>
+      <libsource lib="Connector" part="Conn_Coaxial" description="coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>f2e0797f-e59e-4bbd-8158-1ee7c1e6dc5c</tstamps>
+    </comp>
+    <comp ref="L1">
+      <value>3.9uH</value>
+      <libsource lib="Device" part="L_Iron" description="Inductor with iron core"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>df2fd12b-5d1f-436b-9761-04a6cd9c4e90</tstamps>
+    </comp>
+    <comp ref="L2">
+      <value>3.9uH</value>
+      <libsource lib="Device" part="L_Iron" description="Inductor with iron core"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>0535a1b9-1b53-4bc1-b899-cf18259ad68a</tstamps>
+    </comp>
+    <comp ref="L3">
+      <value>FT37-43</value>
+      <libsource lib="Device" part="L_Ferrite_Small" description="Inductor with ferrite core, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>169f3335-4838-41c9-a345-54a59ee734aa</tstamps>
+    </comp>
+    <comp ref="L4">
+      <value>.15uH</value>
+      <libsource lib="Device" part="L_Iron_Small" description="Inductor with iron core, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>2cf70110-1c7a-489f-8b6a-cf177c06e1ed</tstamps>
+    </comp>
+    <comp ref="L7">
+      <value>10uH</value>
+      <libsource lib="Device" part="L_Iron" description="Inductor with iron core"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>69f20326-6146-4842-879c-70459aa63562</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>NDT2955</value>
+      <libsource lib="Device" part="Q_PMOS_GDS" description="P-MOSFET transistor, gate/drain/source"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>ddcddb25-d4b8-4a5c-bbda-1664a4e2cc96</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>2N7002</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</datasheet>
+      <libsource lib="Transistor_FET" part="2N7002" description="0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>0dce092c-1f2b-4aed-abf3-c423ca46b433</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>2N7002</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</datasheet>
+      <libsource lib="Transistor_FET" part="2N7002" description="0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>edc66afb-a65c-4aef-bebf-50698aed84fd</tstamps>
+    </comp>
+    <comp ref="Q4">
+      <value>BS170</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/BS170-D.PDF</datasheet>
+      <libsource lib="Transistor_FET" part="BS170" description="0.5A Id, 60V Vds, N-Channel MOSFET, TO-92"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>031779b6-f30e-4e9f-9dc6-b4b7552322df</tstamps>
+    </comp>
+    <comp ref="Q5">
+      <value>BS170</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/BS170-D.PDF</datasheet>
+      <libsource lib="Transistor_FET" part="BS170" description="0.5A Id, 60V Vds, N-Channel MOSFET, TO-92"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>0793c521-ec88-405b-8b29-985906e3bad4</tstamps>
+    </comp>
+    <comp ref="Q6">
+      <value>BS170</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/BS170-D.PDF</datasheet>
+      <libsource lib="Transistor_FET" part="BS170" description="0.5A Id, 60V Vds, N-Channel MOSFET, TO-92"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>8fc56cf0-6764-4d7f-abbe-4d86f0dbd5b3</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>22k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>3ce239ec-378e-4a36-8620-8730fa2b199d</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>100k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>78c3a0e2-62af-40b4-a81c-0cb17ce78e74</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>3.6k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>3ac52ed2-5a4d-4516-8d7a-e46e727f28cb</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>270</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>380fc13f-da72-4bf9-888b-0068a9f31643</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>270</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>63affb4d-45f2-4af6-a5c9-595185c2e892</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>270</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>7af07665-3d25-4a2c-a82d-aa3205357cce</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>100k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>109c663c-5b70-4a8b-a56b-bf0b6c983651</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>51</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>28e2ede8-da75-4386-9e09-b181362060c2</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>10k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>369c3e7c-4e20-4c28-b382-8bc70eba5b6b</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>2.2k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>652faa45-bfc9-483b-b714-9c4d6b2d6b62</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>10k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>5be4383e-ed38-453b-abc3-19d94caa7513</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>22k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>e72e78ef-876a-4c43-b844-2facc12afe23</tstamps>
+    </comp>
+    <comp ref="R25">
+      <value>100k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>f7a6ada6-943f-49b4-b66e-637d5a21a9a6</tstamps>
+    </comp>
+    <comp ref="R26">
+      <value>13.7k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>fc27e33f-0c58-4055-8b03-7f986191be0c</tstamps>
+    </comp>
+    <comp ref="R27">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>dbe6fa7b-6095-412e-aeac-2a429a13fe40</tstamps>
+    </comp>
+    <comp ref="R28">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>096fc484-d7c7-4c27-84e8-af7e494be333</tstamps>
+    </comp>
+    <comp ref="R29">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>57c10d24-b089-4f6b-8cb2-b53f38469a18</tstamps>
+    </comp>
+    <comp ref="R30">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>0c0fbfb6-1074-40df-aa48-b5119056b1ae</tstamps>
+    </comp>
+    <comp ref="R31">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>c89bd95b-54ec-46c7-8e1a-778bf495fb43</tstamps>
+    </comp>
+    <comp ref="R32">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>032b78cc-bd29-4902-9a56-ab1941a6cece</tstamps>
+    </comp>
+    <comp ref="R33">
+      <value>47k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>96a08465-46dc-497a-9980-a198d7fc5d10</tstamps>
+    </comp>
+    <comp ref="R34">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>50cc18cb-8564-45b1-824e-2cced5140c07</tstamps>
+    </comp>
+    <comp ref="R35">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>bbda776f-e240-41a2-8451-78752ce43aaa</tstamps>
+    </comp>
+    <comp ref="R36">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>3eff8bf3-bb4f-4b28-bf0a-11d09815c259</tstamps>
+    </comp>
+    <comp ref="R37">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>3e0846fa-43b1-46a8-8962-d0999d697d94</tstamps>
+    </comp>
+    <comp ref="R38">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>7d415259-ca9c-4733-a6f2-8319551d66c1</tstamps>
+    </comp>
+    <comp ref="R39">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>1e7b625a-f26c-40f7-bbd8-2ea0d2993307</tstamps>
+    </comp>
+    <comp ref="R40">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>c25c32c8-2680-4571-8ebe-8707100970bb</tstamps>
+    </comp>
+    <comp ref="R41">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>4a2bfe7a-31f1-4bec-aa74-8cc868f7062e</tstamps>
+    </comp>
+    <comp ref="SW1">
+      <value>SW_Push</value>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>b87b8148-520f-4014-afe6-cfdcb27f21d7</tstamps>
+    </comp>
+    <comp ref="SW2">
+      <value>SW_Push</value>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>744d7f75-cdbb-4234-ac19-0df4bcab75e9</tstamps>
+    </comp>
+    <comp ref="SW3">
+      <value>SW_Push</value>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>51d91170-475b-4042-ba95-6ec95e0fe107</tstamps>
+    </comp>
+    <comp ref="SW4">
+      <value>SW_Push</value>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>9d94025b-ca76-4d01-b730-1ea607c76dad</tstamps>
+    </comp>
+    <comp ref="U6">
+      <value>MSP430F1232IPW</value>
+      <footprint>Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/msp430f1232.pdf</datasheet>
+      <libsource lib="MCU_Texas_MSP430" part="MSP430F1232IPW" description="8kB + 256B Flash, 256B RAM, TSSOP-28"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>3ee5356b-75f9-4241-a665-d9e064012d6d</tstamps>
+    </comp>
+    <comp ref="U7">
+      <value>AD9834</value>
+      <footprint>Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm</footprint>
+      <datasheet>https://www.analog.com/static/imported-files/data_sheets/AD9834.pdf</datasheet>
+      <libsource lib="Interface" part="AD9834" description="10 bit 75 MHz Complete Direct Digital Synthesizer, 2.3V to 5.5V, 20mW, TSSOP-20"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>f902e986-2810-438f-9b45-5a58674af47e</tstamps>
+    </comp>
+    <comp ref="U8">
+      <value>AC02</value>
+      <datasheet>http://www.ti.com/lit/gpn/sn74hc02</datasheet>
+      <libsource lib="74xx" part="74HC02" description="quad 2-input NOR gate"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>a689e18b-2352-4ad3-af0e-69bbc57d18ad 4058d6ec-3fdd-4713-91cd-2557b6ec5b13 696f5537-2b2b-4bf6-848f-df13bcc4b943 3f383ab8-fbb5-4177-8134-200afa4488c5 3dba85e0-4683-4470-a804-997c88b8b1a7</tstamps>
+    </comp>
+    <comp ref="U9">
+      <value>812C50</value>
+      <libsource lib="" part="S-812C_1" description=""/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>ec325c50-f831-41aa-81e5-9dbb109568f7</tstamps>
+    </comp>
+    <comp ref="U10">
+      <value>812C35</value>
+      <libsource lib="CraftsmanICs" part="S-812C" description=""/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>6866dad2-8135-4e25-ba16-1e15317b0d5f</tstamps>
+    </comp>
+    <comp ref="U11">
+      <value>MCP120-3151</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/11184d.pdf</datasheet>
+      <libsource lib="Power_Supervisor" part="MCP120-xxxxTT" description="Microcontroller supervisory circuit, SOT-23"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>98af3049-ecab-47ee-9641-4470328334bf</tstamps>
+    </comp>
+    <comp ref="U22">
+      <value>KCSA02-107</value>
+      <footprint>Display_7Segment:KCSC02-107</footprint>
+      <datasheet>http://www.kingbright.com/attachments/file/psearch/000/00/00/KCSA02-107(Ver.10A).pdf</datasheet>
+      <libsource lib="Display_Character" part="KCSA02-107" description="One digit 7 segment super bright orange LED, common anode"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>68c33099-d44a-4ab3-aaa9-6252b085e2f4</tstamps>
+    </comp>
+    <comp ref="X1">
+      <value>60Mhz</value>
+      <footprint>Oscillator:Oscillator_SMD_EuroQuartz_XO32-4Pin_3.2x2.5mm</footprint>
+      <datasheet>http://cdn-reichelt.de/documents/datenblatt/B400/XO32.pdf</datasheet>
+      <libsource lib="Oscillator" part="XO32" description="HCMOS Clock Oscillator"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>43d5b1e7-d187-4997-bba7-be45a7a90284</tstamps>
+    </comp>
+    <comp ref="X6">
+      <value>32.768k</value>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-MCU-DDS-TX"/>
+      <property name="Sheetfile" value="ATS3B1-MCU-DDS-TX.kicad_sch"/>
+      <sheetpath names="/ATS3B1-MCU-DDS-TX/" tstamps="/90dc6760-adc3-4f45-bf52-7258232585f3/"/>
+      <tstamps>a385c66a-eb6c-460d-829a-77afb559d0b6</tstamps>
+    </comp>
+    <comp ref="C1">
+      <value>22p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>9bd30889-2e10-4a78-98f9-14b3596d7647</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>0.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>f96c1c5e-36aa-40d0-98bb-7a7d49a39e84</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>d808a2d7-77cf-47de-86b9-6f40729c5d72</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>744877e5-d07d-4929-9cc5-358cf390ef3c</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>c01abde4-f65a-4267-b927-49b23d1d4ea3</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>e3773105-6a53-4cd1-9f2f-45649195a633</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>99893209-ecd0-450f-b069-8bb077b373d2</tstamps>
+    </comp>
+    <comp ref="C8">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>5a99b71b-b89c-4625-923c-06a0fbe56d4b</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>da037156-e266-4498-aafa-87d286bd1295</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>a6a46d80-f4d9-482c-888a-64834ac3dba0</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>459ac4cf-b1fa-46b8-8266-1b7d42054a34</tstamps>
+    </comp>
+    <comp ref="C12">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>1e6dc4ba-0455-4bfe-ba4e-706e7734fcee</tstamps>
+    </comp>
+    <comp ref="C13">
+      <value>.001uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>fb8487c0-db66-40b4-8fdc-c7ee67ad4d07</tstamps>
+    </comp>
+    <comp ref="C14">
+      <value>.001uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>005bd88e-c08d-4bfe-9c19-f5dc49dbc919</tstamps>
+    </comp>
+    <comp ref="C15">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>5939f50f-d9e5-48d4-9570-246f9180488f</tstamps>
+    </comp>
+    <comp ref="C16">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>f74f37a6-e8a6-498c-9b85-6449b94d1347</tstamps>
+    </comp>
+    <comp ref="C17">
+      <value>470p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>23979ec4-66e4-4591-80bb-ca4f7a1b8a30</tstamps>
+    </comp>
+    <comp ref="C18">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>b688cbab-6fac-4f47-800f-a53f963f6ff5</tstamps>
+    </comp>
+    <comp ref="C19">
+      <value>.1uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>560c4c22-7bf8-49df-a4d8-506e1a0d9b7d</tstamps>
+    </comp>
+    <comp ref="C20">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>4ff0a75c-4122-4d06-8678-522d1a374f83</tstamps>
+    </comp>
+    <comp ref="C21">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>39b51223-075c-4c6c-8513-bd26723b96ef</tstamps>
+    </comp>
+    <comp ref="C22">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>dd25cb36-1f03-4ed9-8810-d545dd450307</tstamps>
+    </comp>
+    <comp ref="C34">
+      <value>100p</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>e477187a-d06a-4b6d-9ef1-fda2d3abdfaa</tstamps>
+    </comp>
+    <comp ref="C50">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>9b89eacd-5e2c-4cd1-8ecf-ba976fddc2fc</tstamps>
+    </comp>
+    <comp ref="C51">
+      <value>.01uF</value>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>76638f72-7341-46c9-808a-47ee02755ae2</tstamps>
+    </comp>
+    <comp ref="C53">
+      <value>10uF/16V</value>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>2eb91e52-73ef-44de-82d2-7e6a0126f55c</tstamps>
+    </comp>
+    <comp ref="C54">
+      <value>22uF/16V</value>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>1412cac0-f02c-478f-8cae-eb141f144442</tstamps>
+    </comp>
+    <comp ref="C55">
+      <value>10uF/16</value>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>7b2aba38-0faf-410d-8ad3-9b19a562f3d4</tstamps>
+    </comp>
+    <comp ref="CT1">
+      <value>30p</value>
+      <libsource lib="Device" part="C_Trim_Small" description="Trimmable capacitor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>a128106d-aace-4f17-9dde-884e8bc568e0</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>BAV99</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf</datasheet>
+      <libsource lib="Diode" part="BAV99" description="BAV99 High-speed switching diodes, SOT-23"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>6e87686a-0c15-4481-9cd2-0f43d9c243ed</tstamps>
+    </comp>
+    <comp ref="J6">
+      <value>SPK</value>
+      <libsource lib="Connector" part="AudioJack3" description="Audio Jack, 3 Poles (Stereo / TRS)"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>0095e476-7b0c-40e1-8413-c087739e5e29</tstamps>
+    </comp>
+    <comp ref="L5">
+      <value>10uH</value>
+      <libsource lib="Device" part="L_Iron" description="Inductor with iron core"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>8bedaa76-8d90-4e6e-9f4d-6ae2c3addefc</tstamps>
+    </comp>
+    <comp ref="L6">
+      <value>10uH</value>
+      <libsource lib="Device" part="L_Iron" description="Inductor with iron core"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>288e78a8-441a-455e-bb19-5a4f0e3679e4</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>470</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>efe05a5d-0011-457d-917b-80218b68a26b</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>84df7847-ea83-4373-9c03-78aaf5476572</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>330k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>1ad1d722-afbc-4b44-bb91-ec1f62b288f7</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>10k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>20806f43-a8e1-4f9e-b33f-e4d7ab1fe37e</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>330k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>922be84c-12f6-42fb-8ebe-3afd2ebbdcd7</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>22k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>46f45197-6381-4964-8519-1f3bff50c738</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>22k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>8f05b021-316c-4056-bb35-8c30a2cf26c1</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>113k 1%</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>f939ab65-1df7-4b4b-bc30-1dce99146b76</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>2.74k 1%</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>be7d9cc5-eba6-4834-9d48-1bb5010b85d8</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>267k 1%</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>687e1e0a-79d7-47bb-b7cd-aae42cbc70c1</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>100k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>b8eb8ba7-d704-4c79-849b-8bb1334d7cd2</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>330k</value>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>4623400c-d284-47d2-8452-5c730db3de38</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>SA612A</value>
+      <libsource lib="" part="SA612A_1" description=""/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>c47bae14-1bf5-42a8-9661-2b77fb6bc861</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>SA612A</value>
+      <libsource lib="CraftsmanICs" part="SA612A" description=""/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>f710a5be-0018-49ef-9042-3fb3aebb0390</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>LM4808</value>
+      <datasheet>http://www.ti.com/lit/ds/symlink/lm2904-n.pdf</datasheet>
+      <libsource lib="Amplifier_Operational" part="LM358" description="Low-Power, Dual Operational Amplifiers, DIP-8/SOIC-8/TO-99-8"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>7f98a41d-41e9-47a9-808c-0519c1440c99 807495a0-21a8-43d6-9b96-51dab222fb27 118f234e-76e9-4d40-bfa1-2641698a590c</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>74LVC1G3157</value>
+      <footprint>Package_SON:Fairchild_MicroPak-6_1.0x1.45mm_P0.5mm</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/NC7SB3157-D.PDF</datasheet>
+      <libsource lib="Analog_Switch" part="NC7SB3157L6X" description="Single SPDT Low-Voltage Analog Switch or 2:1 Multiplexer/De-Multiplexer Bus Switch, 10Ohm Ron, MicroPak-6"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>5dd20a88-b6d1-4557-8e3f-99357f76fcad 4a2ca50b-869b-4ad8-b332-8413e37810e9</tstamps>
+    </comp>
+    <comp ref="U5">
+      <value>AN6123MS</value>
+      <libsource lib="CraftsmanICs" part="AN6123MS" description=""/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>cdabbcbe-a3a8-44b7-9cf2-76d930889090</tstamps>
+    </comp>
+    <comp ref="Y1">
+      <value>4.9152MHz</value>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>b1088af4-db67-4cf3-8b81-8c5bf47c9bbd</tstamps>
+    </comp>
+    <comp ref="Y2">
+      <value>4.9152MHz</value>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>4094362d-4fd2-41a8-9be9-a1308d319669</tstamps>
+    </comp>
+    <comp ref="Y3">
+      <value>4.9152MHz</value>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>a7ad5eda-a8a6-4d3d-ac64-3ef9165ed739</tstamps>
+    </comp>
+    <comp ref="Y4">
+      <value>4.9152MHz</value>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>e861d3f5-1c7c-4ccf-a137-44fa62503a2e</tstamps>
+    </comp>
+    <comp ref="Y5">
+      <value>4.9152MHz</value>
+      <libsource lib="Device" part="Crystal_Small" description="Two pin crystal, small symbol"/>
+      <property name="Sheetname" value="ATS3B1-RECEIVER-AUDIO"/>
+      <property name="Sheetfile" value="ATS3B1-RECEIVER-AUDIO.kicad_sch"/>
+      <sheetpath names="/ATS3B1-RECEIVER-AUDIO/" tstamps="/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/"/>
+      <tstamps>7f4e9a43-dd1e-48a3-bc88-3661be85f1fa</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="" part="S-812C_1">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">S-812C_1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VSS" type="power_in"/>
+        <pin num="2" name="VIN" type="power_in"/>
+        <pin num="3" name="VOUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="" part="SA612A_1">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SA612A_1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IN_A" type="input"/>
+        <pin num="2" name="IN_B" type="input"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="OUT_A" type="output"/>
+        <pin num="5" name="OUT_B" type="output"/>
+        <pin num="6" name="OSC_B" type="input"/>
+        <pin num="7" name="OSC_E" type="output"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="74xx" part="74HC02">
+      <description>quad 2-input NOR gate</description>
+      <docs>http://www.ti.com/lit/gpn/sn74hc02</docs>
+      <footprints>
+        <fp>SO14*</fp>
+        <fp>DIP*W7.62mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">74HC02</field>
+        <field name="Datasheet">http://www.ti.com/lit/gpn/sn74hc02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="output"/>
+        <pin num="2" name="" type="input"/>
+        <pin num="3" name="" type="input"/>
+        <pin num="4" name="" type="output"/>
+        <pin num="5" name="" type="input"/>
+        <pin num="6" name="" type="input"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="" type="input"/>
+        <pin num="9" name="" type="input"/>
+        <pin num="10" name="" type="output"/>
+        <pin num="11" name="" type="input"/>
+        <pin num="12" name="" type="input"/>
+        <pin num="13" name="" type="output"/>
+        <pin num="14" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Amplifier_Operational" part="LM358">
+      <description>Low-Power, Dual Operational Amplifiers, DIP-8/SOIC-8/TO-99-8</description>
+      <docs>http://www.ti.com/lit/ds/symlink/lm2904-n.pdf</docs>
+      <footprints>
+        <fp>SOIC*3.9x4.9mm*P1.27mm*</fp>
+        <fp>DIP*W7.62mm*</fp>
+        <fp>TO*99*</fp>
+        <fp>OnSemi*Micro8*</fp>
+        <fp>TSSOP*3x3mm*P0.65mm*</fp>
+        <fp>TSSOP*4.4x3mm*P0.65mm*</fp>
+        <fp>MSOP*3x3mm*P0.65mm*</fp>
+        <fp>SSOP*3.9x4.9mm*P0.635mm*</fp>
+        <fp>LFCSP*2x2mm*P0.5mm*</fp>
+        <fp>*SIP*</fp>
+        <fp>SOIC*5.3x6.2mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM358</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/lm2904-n.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="output"/>
+        <pin num="2" name="-" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="V-" type="power_in"/>
+        <pin num="5" name="+" type="input"/>
+        <pin num="6" name="-" type="input"/>
+        <pin num="7" name="" type="output"/>
+        <pin num="8" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Analog_Switch" part="NC7SB3157L6X">
+      <description>Single SPDT Low-Voltage Analog Switch or 2:1 Multiplexer/De-Multiplexer Bus Switch, 10Ohm Ron, MicroPak-6</description>
+      <docs>https://www.onsemi.com/pub/Collateral/NC7SB3157-D.PDF</docs>
+      <footprints>
+        <fp>Fairchild*MicroPak*1.0x1.45mm*P0.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">NC7SB3157L6X</field>
+        <field name="Footprint">Package_SON:Fairchild_MicroPak-6_1.0x1.45mm_P0.5mm</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/NC7SB3157-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+        <pin num="5" name="V+" type="power_in"/>
+        <pin num="6" name="" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="AudioJack3">
+      <description>Audio Jack, 3 Poles (Stereo / TRS)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Jack*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">AudioJack3</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="R" name="" type="passive"/>
+        <pin num="S" name="" type="passive"/>
+        <pin num="T" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x06_Female">
+      <description>Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x06_Female</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x07_Female">
+      <description>Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x07_Female</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_Coaxial">
+      <description>coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)</description>
+      <docs> ~</docs>
+      <footprints>
+        <fp>*BNC*</fp>
+        <fp>*SMA*</fp>
+        <fp>*SMB*</fp>
+        <fp>*SMC*</fp>
+        <fp>*Cinch*</fp>
+        <fp>*LEMO*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_Coaxial</field>
+        <field name="Datasheet"> ~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="In" type="passive"/>
+        <pin num="2" name="Ext" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Jack-DC">
+      <description>DC Barrel Jack</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>BarrelJack*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Jack-DC</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CraftsmanICs" part="AN6123MS">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AN6123MS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VCC" type="power_in"/>
+        <pin num="2" name="DET" type="input"/>
+        <pin num="3" name="" type="input"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="CraftsmanICs" part="S-812C">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">S-812C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VSS" type="power_in"/>
+        <pin num="2" name="VIN" type="power_in"/>
+        <pin num="3" name="VOUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="CraftsmanICs" part="SA612A">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SA612A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IN_A" type="input"/>
+        <pin num="2" name="IN_B" type="input"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="OUT_A" type="output"/>
+        <pin num="5" name="OUT_B" type="output"/>
+        <pin num="6" name="OSC_B" type="input"/>
+        <pin num="7" name="OSC_E" type="output"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Polarized_Small_US">
+      <description>Polarized capacitor, small US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Polarized_Small_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Trim_Small">
+      <description>Trimmable capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Trim_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Crystal_Small">
+      <description>Two pin crystal, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D_Schottky">
+      <description>Schottky diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Schottky</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L_Ferrite_Small">
+      <description>Inductor with ferrite core, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Ferrite_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L_Iron">
+      <description>Inductor with iron core</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Iron</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L_Iron_Small">
+      <description>Inductor with iron core, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Iron_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Q_PMOS_GDS">
+      <description>P-MOSFET transistor, gate/drain/source</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_PMOS_GDS</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="D" type="passive"/>
+        <pin num="3" name="S" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Small">
+      <description>Resistor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="1N47xxA">
+      <description>1300mW Silicon planar power Zener diodes, DO-41</description>
+      <docs>https://www.vishay.com/docs/85816/1n4728a.pdf</docs>
+      <footprints>
+        <fp>D*DO?41*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">1N47xxA</field>
+        <field name="Footprint">Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal</field>
+        <field name="Datasheet">https://www.vishay.com/docs/85816/1n4728a.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="BAV99">
+      <description>BAV99 High-speed switching diodes, SOT-23</description>
+      <docs>https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">BAV99</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://assets.nexperia.com/documents/data-sheet/BAV99_SER.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+        <pin num="3" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="BZT52Bxx">
+      <description>500mW Zener Diode, SOD-123F</description>
+      <docs>https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzt52b2v4.pdf</docs>
+      <footprints>
+        <fp>D?SOD?123F*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">BZT52Bxx</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123F</field>
+        <field name="Datasheet">https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzt52b2v4.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Display_Character" part="KCSA02-107">
+      <description>One digit 7 segment super bright orange LED, common anode</description>
+      <docs>http://www.kingbright.com/attachments/file/psearch/000/00/00/KCSA02-107(Ver.10A).pdf</docs>
+      <footprints>
+        <fp>KCSC02?107*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">KCSA02-107</field>
+        <field name="Footprint">Display_7Segment:KCSC02-107</field>
+        <field name="Datasheet">http://www.kingbright.com/attachments/file/psearch/000/00/00/KCSA02-107(Ver.10A).pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="E" type="input"/>
+        <pin num="2" name="D" type="input"/>
+        <pin num="3" name="CA" type="input"/>
+        <pin num="4" name="C" type="input"/>
+        <pin num="5" name="DP" type="input"/>
+        <pin num="6" name="B" type="input"/>
+        <pin num="7" name="A" type="input"/>
+        <pin num="8" name="CA" type="input"/>
+        <pin num="9" name="F" type="input"/>
+        <pin num="10" name="G" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Interface" part="AD9834">
+      <description>10 bit 75 MHz Complete Direct Digital Synthesizer, 2.3V to 5.5V, 20mW, TSSOP-20</description>
+      <docs>https://www.analog.com/static/imported-files/data_sheets/AD9834.pdf</docs>
+      <footprints>
+        <fp>TSSOP*4.4x6.5mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AD9834</field>
+        <field name="Footprint">Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm</field>
+        <field name="Datasheet">https://www.analog.com/static/imported-files/data_sheets/AD9834.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="FS_ADJUST" type="passive"/>
+        <pin num="2" name="REFOUT" type="output"/>
+        <pin num="3" name="COMP" type="passive"/>
+        <pin num="4" name="AVDD" type="power_in"/>
+        <pin num="5" name="DVDD" type="power_in"/>
+        <pin num="6" name="CAP/2.5V" type="passive"/>
+        <pin num="7" name="DGND" type="power_in"/>
+        <pin num="8" name="MCLK" type="input"/>
+        <pin num="9" name="FSELECT" type="input"/>
+        <pin num="10" name="PSELECT" type="input"/>
+        <pin num="11" name="RESET" type="input"/>
+        <pin num="12" name="SLEEP" type="input"/>
+        <pin num="13" name="SDATA" type="input"/>
+        <pin num="14" name="SCLK" type="input"/>
+        <pin num="15" name="~{FSYNC}" type="input"/>
+        <pin num="16" name="SIGNBITOUT" type="output"/>
+        <pin num="17" name="VIN" type="power_in"/>
+        <pin num="18" name="AGND" type="power_in"/>
+        <pin num="19" name="IOUT" type="output"/>
+        <pin num="20" name="IOUTB" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="MCU_Texas_MSP430" part="MSP430F1232IPW">
+      <description>8kB + 256B Flash, 256B RAM, TSSOP-28</description>
+      <docs>http://www.ti.com/lit/ds/symlink/msp430f1232.pdf</docs>
+      <footprints>
+        <fp>TSSOP*4.4x9.7mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MSP430F1232IPW</field>
+        <field name="Footprint">Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/msp430f1232.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TEST" type="input"/>
+        <pin num="2" name="VCC" type="power_in"/>
+        <pin num="3" name="Rosc/P2.5" type="bidirectional"/>
+        <pin num="4" name="VSS" type="power_in"/>
+        <pin num="5" name="XOUT" type="output"/>
+        <pin num="6" name="XIN" type="input"/>
+        <pin num="7" name="~{RST}/NMI" type="input"/>
+        <pin num="8" name="ACLK/A0/P2.0" type="bidirectional"/>
+        <pin num="9" name="INCLK/A1/P2.1" type="bidirectional"/>
+        <pin num="10" name="TA0/A2/P2.2" type="bidirectional"/>
+        <pin num="11" name="P3.0/A5/STE0" type="bidirectional"/>
+        <pin num="12" name="P3.1/SIMO0" type="bidirectional"/>
+        <pin num="13" name="P3.2/SOMI0" type="bidirectional"/>
+        <pin num="14" name="P3.3/UCLK0" type="bidirectional"/>
+        <pin num="15" name="P3.4/UTXD0" type="bidirectional"/>
+        <pin num="16" name="P3.5/URXD0" type="bidirectional"/>
+        <pin num="17" name="P3.6/A6" type="bidirectional"/>
+        <pin num="18" name="P3.7/A7" type="bidirectional"/>
+        <pin num="19" name="TA1/VeREF-/VREF-/A3/P2.3" type="bidirectional"/>
+        <pin num="20" name="TA2/VeREF+/VREF+/A4/P2.4" type="bidirectional"/>
+        <pin num="21" name="TACLK/ADC10CLK/P1.0" type="bidirectional"/>
+        <pin num="22" name="TA0/P1.1" type="bidirectional"/>
+        <pin num="23" name="TA1/P1.2" type="bidirectional"/>
+        <pin num="24" name="TA2/P1.3" type="bidirectional"/>
+        <pin num="25" name="SMCLK/TCK/P1.4" type="bidirectional"/>
+        <pin num="26" name="TMS/TA0/P1.5" type="bidirectional"/>
+        <pin num="27" name="TDI/TCLK/TA1/P1.6" type="bidirectional"/>
+        <pin num="28" name="TDO/TDI/TA2/P1.7" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Oscillator" part="XO32">
+      <description>HCMOS Clock Oscillator</description>
+      <docs>http://cdn-reichelt.de/documents/datenblatt/B400/XO32.pdf</docs>
+      <footprints>
+        <fp>Oscillator*SMD*EuroQuartz*XO32*3.2x2.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">X</field>
+        <field name="Value">XO32</field>
+        <field name="Footprint">Oscillator:Oscillator_SMD_EuroQuartz_XO32-4Pin_3.2x2.5mm</field>
+        <field name="Datasheet">http://cdn-reichelt.de/documents/datenblatt/B400/XO32.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="EN" type="input"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="OUT" type="output"/>
+        <pin num="4" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Power_Supervisor" part="MCP120-xxxxTT">
+      <description>Microcontroller supervisory circuit, SOT-23</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/11184d.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP120-xxxxTT</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/11184d.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~{RST}" type="open_collector"/>
+        <pin num="2" name="VDD" type="power_in"/>
+        <pin num="3" name="VSS" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="2N7002">
+      <description>0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23</description>
+      <docs>https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">2N7002</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="BS170">
+      <description>0.5A Id, 60V Vds, N-Channel MOSFET, TO-92</description>
+      <docs>https://www.onsemi.com/pub/Collateral/BS170-D.PDF</docs>
+      <footprints>
+        <fp>TO?92*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BS170</field>
+        <field name="Footprint">Package_TO_SOT_THT:TO-92_Inline</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/BS170-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="D" type="passive"/>
+        <pin num="2" name="G" type="input"/>
+        <pin num="3" name="S" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="74xx">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/74xx.kicad_sym</uri>
+    </library>
+    <library logical="Amplifier_Operational">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Amplifier_Operational.kicad_sym</uri>
+    </library>
+    <library logical="Analog_Switch">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Analog_Switch.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="CraftsmanICs">
+      <uri>C:/Users/cheng/Documents/MyKicads/MyLibrary/CraftsmanICs.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="Diode">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Diode.kicad_sym</uri>
+    </library>
+    <library logical="Display_Character">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Display_Character.kicad_sym</uri>
+    </library>
+    <library logical="Interface">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Interface.kicad_sym</uri>
+    </library>
+    <library logical="MCU_Texas_MSP430">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/MCU_Texas_MSP430.kicad_sym</uri>
+    </library>
+    <library logical="Oscillator">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Oscillator.kicad_sym</uri>
+    </library>
+    <library logical="Power_Supervisor">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Power_Supervisor.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Switch.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3.5V">
+      <node ref="C23" pin="1" pintype="passive"/>
+      <node ref="C57" pin="1" pintype="passive"/>
+      <node ref="L7" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U10" pin="3" pinfunction="VOUT" pintype="power_out"/>
+      <node ref="U7" pin="5" pinfunction="DVDD" pintype="power_in"/>
+      <node ref="X1" pin="1" pinfunction="EN" pintype="input"/>
+      <node ref="X1" pin="4" pinfunction="V+" pintype="power_in"/>
+    </net>
+    <net code="2" name="+5V">
+      <node ref="C10" pin="1" pintype="passive"/>
+      <node ref="C25" pin="1" pintype="passive"/>
+      <node ref="C26" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C52" pin="1" pintype="passive"/>
+      <node ref="C58" pin="1" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="U1" pin="8" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U2" pin="8" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U3" pin="8" pinfunction="V+" pintype="power_in"/>
+      <node ref="U4" pin="5" pinfunction="V+" pintype="power_in"/>
+      <node ref="U5" pin="1" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U7" pin="4" pinfunction="AVDD" pintype="power_in"/>
+      <node ref="U8" pin="14" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U8" pin="2" pintype="input"/>
+      <node ref="U8" pin="3" pintype="input"/>
+      <node ref="U9" pin="3" pinfunction="VOUT" pintype="power_out"/>
+    </net>
+    <net code="3" name="/ATS3B1-MCU-DDS-TX/BAND_V">
+      <node ref="C48" pin="1" pintype="passive"/>
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="U6" pin="20" pinfunction="TA2/VeREF+/VREF+/A4/P2.4" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/ATS3B1-MCU-DDS-TX/DASH">
+      <node ref="C35" pin="1" pintype="passive"/>
+      <node ref="J3" pin="R" pintype="passive"/>
+      <node ref="R31" pin="2" pintype="passive"/>
+      <node ref="U6" pin="8" pinfunction="ACLK/A0/P2.0" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/ATS3B1-MCU-DDS-TX/DOT">
+      <node ref="C42" pin="1" pintype="passive"/>
+      <node ref="J3" pin="T" pintype="passive"/>
+      <node ref="R32" pin="2" pintype="passive"/>
+      <node ref="U6" pin="9" pinfunction="INCLK/A1/P2.1" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/ATS3B1-MCU-DDS-TX/MENU">
+      <node ref="C38" pin="1" pintype="passive"/>
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="SW4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U6" pin="21" pinfunction="TACLK/ADC10CLK/P1.0" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/ATS3B1-MCU-DDS-TX/PIN25">
+      <node ref="J4" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="U6" pin="25" pinfunction="SMCLK/TCK/P1.4" pintype="bidirectional"/>
+      <node ref="U7" pin="13" pinfunction="SDATA" pintype="input"/>
+    </net>
+    <net code="8" name="/ATS3B1-MCU-DDS-TX/PIN26">
+      <node ref="J4" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="U6" pin="26" pinfunction="TMS/TA0/P1.5" pintype="bidirectional"/>
+      <node ref="U7" pin="14" pinfunction="SCLK" pintype="input"/>
+    </net>
+    <net code="9" name="/ATS3B1-MCU-DDS-TX/PIN27">
+      <node ref="J4" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U6" pin="27" pinfunction="TDI/TCLK/TA1/P1.6" pintype="bidirectional"/>
+      <node ref="U7" pin="15" pinfunction="~{FSYNC}" pintype="input"/>
+    </net>
+    <net code="10" name="/ATS3B1-MCU-DDS-TX/RIT">
+      <node ref="C45" pin="1" pintype="passive"/>
+      <node ref="R29" pin="2" pintype="passive"/>
+      <node ref="SW3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U6" pin="23" pinfunction="TA1/P1.2" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="/ATS3B1-MCU-DDS-TX/RST">
+      <node ref="J4" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R33" pin="1" pintype="passive"/>
+      <node ref="U11" pin="1" pinfunction="~{RST}" pintype="open_collector"/>
+      <node ref="U6" pin="7" pinfunction="~{RST}/NMI" pintype="input"/>
+    </net>
+    <net code="12" name="/ATS3B1-MCU-DDS-TX/TEST">
+      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U6" pin="1" pinfunction="TEST" pintype="input"/>
+    </net>
+    <net code="13" name="/ATS3B1-MCU-DDS-TX/TUNEDN">
+      <node ref="C44" pin="1" pintype="passive"/>
+      <node ref="R27" pin="2" pintype="passive"/>
+      <node ref="SW2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U6" pin="22" pinfunction="TA0/P1.1" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="/ATS3B1-MCU-DDS-TX/TUNEUP">
+      <node ref="C43" pin="1" pintype="passive"/>
+      <node ref="R28" pin="2" pintype="passive"/>
+      <node ref="SW1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U6" pin="10" pinfunction="TA0/A2/P2.2" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="DDS_LO">
+      <node ref="C32" pin="2" pintype="passive"/>
+      <node ref="C33" pin="1" pintype="passive"/>
+      <node ref="C34" pin="1" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="U7" pin="17" pinfunction="VIN" pintype="power_in"/>
+    </net>
+    <net code="16" name="GNDREF">
+      <node ref="C10" pin="2" pintype="passive"/>
+      <node ref="C12" pin="2" pintype="passive"/>
+      <node ref="C13" pin="2" pintype="passive"/>
+      <node ref="C14" pin="2" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C22" pin="2" pintype="passive"/>
+      <node ref="C23" pin="2" pintype="passive"/>
+      <node ref="C24" pin="1" pintype="passive"/>
+      <node ref="C25" pin="2" pintype="passive"/>
+      <node ref="C27" pin="1" pintype="passive"/>
+      <node ref="C28" pin="1" pintype="passive"/>
+      <node ref="C29" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C31" pin="2" pintype="passive"/>
+      <node ref="C33" pin="2" pintype="passive"/>
+      <node ref="C35" pin="2" pintype="passive"/>
+      <node ref="C36" pin="2" pintype="passive"/>
+      <node ref="C38" pin="2" pintype="passive"/>
+      <node ref="C39" pin="2" pintype="passive"/>
+      <node ref="C40" pin="2" pintype="passive"/>
+      <node ref="C42" pin="2" pintype="passive"/>
+      <node ref="C43" pin="2" pintype="passive"/>
+      <node ref="C44" pin="2" pintype="passive"/>
+      <node ref="C45" pin="2" pintype="passive"/>
+      <node ref="C46" pin="2" pintype="passive"/>
+      <node ref="C47" pin="2" pintype="passive"/>
+      <node ref="C48" pin="2" pintype="passive"/>
+      <node ref="C49" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C51" pin="2" pintype="passive"/>
+      <node ref="C52" pin="2" pintype="passive"/>
+      <node ref="C53" pin="2" pintype="passive"/>
+      <node ref="C55" pin="2" pintype="passive"/>
+      <node ref="C56" pin="2" pintype="passive"/>
+      <node ref="C57" pin="2" pintype="passive"/>
+      <node ref="C58" pin="2" pintype="passive"/>
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="CT1" pin="2" pintype="passive"/>
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J2" pin="2" pintype="passive"/>
+      <node ref="J3" pin="S" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="Ext" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q4" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="Q5" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="Q6" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="R17" pin="2" pintype="passive"/>
+      <node ref="R18" pin="2" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+      <node ref="R26" pin="2" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="SW1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U10" pin="1" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U11" pin="3" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U2" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="4" pinfunction="V-" pintype="power_in"/>
+      <node ref="U4" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U5" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="U6" pin="4" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U7" pin="10" pinfunction="PSELECT" pintype="input"/>
+      <node ref="U7" pin="11" pinfunction="RESET" pintype="input"/>
+      <node ref="U7" pin="12" pinfunction="SLEEP" pintype="input"/>
+      <node ref="U7" pin="18" pinfunction="AGND" pintype="power_in"/>
+      <node ref="U7" pin="7" pinfunction="DGND" pintype="power_in"/>
+      <node ref="U7" pin="9" pinfunction="FSELECT" pintype="input"/>
+      <node ref="U8" pin="12" pintype="input"/>
+      <node ref="U8" pin="7" pinfunction="GND" pintype="power_in"/>
+      <node ref="U8" pin="9" pintype="input"/>
+      <node ref="U9" pin="1" pinfunction="VSS" pintype="power_in"/>
+      <node ref="X1" pin="2" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="17" name="MUTE">
+      <node ref="C49" pin="1" pintype="passive"/>
+      <node ref="J4" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="U4" pin="6" pintype="input"/>
+      <node ref="U6" pin="28" pinfunction="TDO/TDI/TA2/P1.7" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="Net-(C1-Pad2)">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="IN_A" pintype="input"/>
+    </net>
+    <net code="19" name="Net-(C2-Pad2)">
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="IN_B" pintype="input"/>
+    </net>
+    <net code="20" name="Net-(C4-Pad1)">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="L5" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="21" name="Net-(C4-Pad2)">
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="Y1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="22" name="Net-(C5-Pad1)">
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="Y1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="23" name="Net-(C6-Pad1)">
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="Y2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y3" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(C7-Pad1)">
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="Y3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y4" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="25" name="Net-(C8-Pad1)">
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="IN_A" pintype="input"/>
+      <node ref="U2" pin="2" pinfunction="IN_B" pintype="input"/>
+    </net>
+    <net code="26" name="Net-(C8-Pad2)">
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="Y4" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="27" name="Net-(C11-Pad1)">
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="C12" pin="1" pintype="passive"/>
+      <node ref="U2" pin="7" pinfunction="OSC_E" pintype="output"/>
+    </net>
+    <net code="28" name="Net-(C11-Pad2)">
+      <node ref="C11" pin="2" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="OSC_B" pintype="input"/>
+      <node ref="Y5" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="29" name="Net-(C13-Pad1)">
+      <node ref="C13" pin="1" pintype="passive"/>
+      <node ref="C16" pin="1" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="OUT_B" pintype="output"/>
+    </net>
+    <net code="30" name="Net-(C14-Pad1)">
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="C15" pin="1" pintype="passive"/>
+      <node ref="U2" pin="4" pinfunction="OUT_A" pintype="output"/>
+    </net>
+    <net code="31" name="Net-(C15-Pad2)">
+      <node ref="C15" pin="2" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="32" name="Net-(C16-Pad2)">
+      <node ref="C16" pin="2" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+    </net>
+    <net code="33" name="Net-(C17-Pad1)">
+      <node ref="C17" pin="1" pintype="passive"/>
+      <node ref="C18" pin="1" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U3" pin="1" pintype="output"/>
+    </net>
+    <net code="34" name="Net-(C17-Pad2)">
+      <node ref="C17" pin="2" pintype="passive"/>
+      <node ref="D2" pin="3" pinfunction="K" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="35" name="Net-(C18-Pad2)">
+      <node ref="C18" pin="2" pintype="passive"/>
+      <node ref="U5" pin="3" pintype="input"/>
+    </net>
+    <net code="36" name="Net-(C19-Pad1)">
+      <node ref="C19" pin="1" pintype="passive"/>
+      <node ref="U5" pin="5" pintype="output"/>
+    </net>
+    <net code="37" name="Net-(C19-Pad2)">
+      <node ref="C19" pin="2" pintype="passive"/>
+      <node ref="U4" pin="1" pintype="passive"/>
+    </net>
+    <net code="38" name="Net-(C20-Pad1)">
+      <node ref="C20" pin="1" pintype="passive"/>
+      <node ref="C21" pin="1" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+    </net>
+    <net code="39" name="Net-(C20-Pad2)">
+      <node ref="C20" pin="2" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="U3" pin="6" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="40" name="Net-(C21-Pad2)">
+      <node ref="C21" pin="2" pintype="passive"/>
+      <node ref="L6" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="U3" pin="7" pintype="output"/>
+    </net>
+    <net code="41" name="Net-(C22-Pad1)">
+      <node ref="C22" pin="1" pintype="passive"/>
+      <node ref="J6" pin="S" pintype="passive"/>
+    </net>
+    <net code="42" name="Net-(C24-Pad2)">
+      <node ref="C24" pin="2" pintype="passive"/>
+      <node ref="U7" pin="6" pinfunction="CAP/2.5V" pintype="passive"/>
+    </net>
+    <net code="43" name="Net-(C26-Pad2)">
+      <node ref="C26" pin="2" pintype="passive"/>
+      <node ref="U7" pin="3" pinfunction="COMP" pintype="passive"/>
+    </net>
+    <net code="44" name="Net-(C27-Pad2)">
+      <node ref="C27" pin="2" pintype="passive"/>
+      <node ref="U7" pin="2" pinfunction="REFOUT" pintype="output"/>
+    </net>
+    <net code="45" name="Net-(C28-Pad2)">
+      <node ref="C28" pin="2" pintype="passive"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="U7" pin="20" pinfunction="IOUTB" pintype="output"/>
+    </net>
+    <net code="46" name="Net-(C29-Pad1)">
+      <node ref="C29" pin="1" pintype="passive"/>
+      <node ref="C30" pin="1" pintype="passive"/>
+      <node ref="L2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+      <node ref="U7" pin="19" pinfunction="IOUT" pintype="output"/>
+    </net>
+    <net code="47" name="Net-(C30-Pad2)">
+      <node ref="C30" pin="2" pintype="passive"/>
+      <node ref="C31" pin="1" pintype="passive"/>
+      <node ref="C32" pin="1" pintype="passive"/>
+      <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="L2" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="48" name="Net-(C34-Pad2)">
+      <node ref="C34" pin="2" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="OSC_B" pintype="input"/>
+    </net>
+    <net code="49" name="Net-(C37-Pad1)">
+      <node ref="C37" pin="1" pintype="passive"/>
+      <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+    </net>
+    <net code="50" name="Net-(C37-Pad2)">
+      <node ref="C37" pin="2" pintype="passive"/>
+      <node ref="C39" pin="1" pintype="passive"/>
+      <node ref="L3" pin="2" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="51" name="Net-(C41-Pad1)">
+      <node ref="C41" pin="1" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="52" name="Net-(C41-Pad2)">
+      <node ref="C41" pin="2" pintype="passive"/>
+      <node ref="C59" pin="1" pintype="passive"/>
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="L3" pin="1" pintype="passive"/>
+      <node ref="Q4" pin="1" pinfunction="D" pintype="passive"/>
+      <node ref="Q5" pin="1" pinfunction="D" pintype="passive"/>
+      <node ref="Q6" pin="1" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="53" name="Net-(C46-Pad1)">
+      <node ref="C46" pin="1" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J2" pin="1" pintype="passive"/>
+    </net>
+    <net code="54" name="Net-(C50-Pad1)">
+      <node ref="C50" pin="1" pintype="passive"/>
+      <node ref="U4" pin="3" pintype="passive"/>
+    </net>
+    <net code="55" name="Net-(C50-Pad2)">
+      <node ref="C50" pin="2" pintype="passive"/>
+      <node ref="C51" pin="1" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+    </net>
+    <net code="56" name="Net-(C53-Pad1)">
+      <node ref="C53" pin="1" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="U3" pin="5" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="57" name="Net-(C54-Pad1)">
+      <node ref="C54" pin="1" pintype="passive"/>
+      <node ref="L6" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="58" name="Net-(C54-Pad2)">
+      <node ref="C54" pin="2" pintype="passive"/>
+      <node ref="J6" pin="R" pintype="passive"/>
+      <node ref="J6" pin="T" pintype="passive"/>
+    </net>
+    <net code="59" name="Net-(C55-Pad1)">
+      <node ref="C55" pin="1" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="U5" pin="2" pinfunction="DET" pintype="input"/>
+    </net>
+    <net code="60" name="Net-(C59-Pad2)">
+      <node ref="C59" pin="2" pintype="passive"/>
+      <node ref="J1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+    </net>
+    <net code="61" name="Net-(CT1-Pad1)">
+      <node ref="CT1" pin="1" pintype="passive"/>
+      <node ref="Y5" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="62" name="Net-(D4-Pad2)">
+      <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="R22" pin="2" pintype="passive"/>
+    </net>
+    <net code="63" name="Net-(J1-Pad2)">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R20" pin="2" pintype="passive"/>
+    </net>
+    <net code="64" name="Net-(J1-Pad6)">
+      <node ref="J1" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="L4" pin="1" pintype="passive"/>
+    </net>
+    <net code="65" name="Net-(J5-Pad1)">
+      <node ref="J5" pin="1" pinfunction="In" pintype="passive"/>
+      <node ref="L4" pin="2" pintype="passive"/>
+    </net>
+    <net code="66" name="Net-(L5-Pad2)">
+      <node ref="L5" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="OUT_A" pintype="output"/>
+    </net>
+    <net code="67" name="Net-(Q3-Pad1)">
+      <node ref="Q3" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="U6" pin="24" pinfunction="TA2/P1.3" pintype="bidirectional"/>
+    </net>
+    <net code="68" name="Net-(Q3-Pad3)">
+      <node ref="Q3" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="R22" pin="1" pintype="passive"/>
+    </net>
+    <net code="69" name="Net-(Q4-Pad2)">
+      <node ref="Q4" pin="2" pinfunction="G" pintype="input"/>
+      <node ref="Q5" pin="2" pinfunction="G" pintype="input"/>
+      <node ref="Q6" pin="2" pinfunction="G" pintype="input"/>
+      <node ref="U8" pin="10" pintype="output"/>
+      <node ref="U8" pin="13" pintype="output"/>
+    </net>
+    <net code="70" name="Net-(R3-Pad2)">
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="71" name="Net-(R8-Pad1)">
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="U4" pin="4" pintype="passive"/>
+    </net>
+    <net code="72" name="Net-(R15-Pad2)">
+      <node ref="R15" pin="2" pintype="passive"/>
+      <node ref="U7" pin="1" pinfunction="FS_ADJUST" pintype="passive"/>
+    </net>
+    <net code="73" name="Net-(R19-Pad1)">
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="U7" pin="16" pinfunction="SIGNBITOUT" pintype="output"/>
+      <node ref="U8" pin="5" pintype="input"/>
+      <node ref="U8" pin="6" pintype="input"/>
+    </net>
+    <net code="74" name="Net-(R25-Pad1)">
+      <node ref="R25" pin="1" pintype="passive"/>
+      <node ref="R26" pin="1" pintype="passive"/>
+      <node ref="U6" pin="19" pinfunction="TA1/VeREF-/VREF-/A3/P2.3" pintype="bidirectional"/>
+    </net>
+    <net code="75" name="Net-(R34-Pad1)">
+      <node ref="R34" pin="1" pintype="passive"/>
+      <node ref="U22" pin="7" pinfunction="A" pintype="input"/>
+    </net>
+    <net code="76" name="Net-(R34-Pad2)">
+      <node ref="R34" pin="2" pintype="passive"/>
+      <node ref="U6" pin="11" pinfunction="P3.0/A5/STE0" pintype="bidirectional"/>
+    </net>
+    <net code="77" name="Net-(R35-Pad1)">
+      <node ref="R35" pin="1" pintype="passive"/>
+      <node ref="U22" pin="6" pinfunction="B" pintype="input"/>
+    </net>
+    <net code="78" name="Net-(R35-Pad2)">
+      <node ref="R35" pin="2" pintype="passive"/>
+      <node ref="U6" pin="12" pinfunction="P3.1/SIMO0" pintype="bidirectional"/>
+    </net>
+    <net code="79" name="Net-(R36-Pad1)">
+      <node ref="R36" pin="1" pintype="passive"/>
+      <node ref="U22" pin="4" pinfunction="C" pintype="input"/>
+    </net>
+    <net code="80" name="Net-(R36-Pad2)">
+      <node ref="R36" pin="2" pintype="passive"/>
+      <node ref="U6" pin="13" pinfunction="P3.2/SOMI0" pintype="bidirectional"/>
+    </net>
+    <net code="81" name="Net-(R37-Pad1)">
+      <node ref="R37" pin="1" pintype="passive"/>
+      <node ref="U22" pin="2" pinfunction="D" pintype="input"/>
+    </net>
+    <net code="82" name="Net-(R37-Pad2)">
+      <node ref="R37" pin="2" pintype="passive"/>
+      <node ref="U6" pin="14" pinfunction="P3.3/UCLK0" pintype="bidirectional"/>
+    </net>
+    <net code="83" name="Net-(R38-Pad1)">
+      <node ref="R38" pin="1" pintype="passive"/>
+      <node ref="U22" pin="1" pinfunction="E" pintype="input"/>
+    </net>
+    <net code="84" name="Net-(R38-Pad2)">
+      <node ref="R38" pin="2" pintype="passive"/>
+      <node ref="U6" pin="15" pinfunction="P3.4/UTXD0" pintype="bidirectional"/>
+    </net>
+    <net code="85" name="Net-(R39-Pad1)">
+      <node ref="R39" pin="1" pintype="passive"/>
+      <node ref="U22" pin="9" pinfunction="F" pintype="input"/>
+    </net>
+    <net code="86" name="Net-(R39-Pad2)">
+      <node ref="R39" pin="2" pintype="passive"/>
+      <node ref="U6" pin="16" pinfunction="P3.5/URXD0" pintype="bidirectional"/>
+    </net>
+    <net code="87" name="Net-(R40-Pad1)">
+      <node ref="R40" pin="1" pintype="passive"/>
+      <node ref="U22" pin="10" pinfunction="G" pintype="input"/>
+    </net>
+    <net code="88" name="Net-(R40-Pad2)">
+      <node ref="R40" pin="2" pintype="passive"/>
+      <node ref="U6" pin="17" pinfunction="P3.6/A6" pintype="bidirectional"/>
+    </net>
+    <net code="89" name="Net-(R41-Pad1)">
+      <node ref="R41" pin="1" pintype="passive"/>
+      <node ref="U22" pin="5" pinfunction="DP" pintype="input"/>
+    </net>
+    <net code="90" name="Net-(R41-Pad2)">
+      <node ref="R41" pin="2" pintype="passive"/>
+      <node ref="U6" pin="18" pinfunction="P3.7/A7" pintype="bidirectional"/>
+    </net>
+    <net code="91" name="Net-(U6-Pad5)">
+      <node ref="U6" pin="5" pinfunction="XOUT" pintype="output"/>
+      <node ref="X6" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="92" name="Net-(U6-Pad6)">
+      <node ref="U6" pin="6" pinfunction="XIN" pintype="input"/>
+      <node ref="X6" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="93" name="Net-(U7-Pad8)">
+      <node ref="U7" pin="8" pinfunction="MCLK" pintype="input"/>
+      <node ref="X1" pin="3" pinfunction="OUT" pintype="output"/>
+    </net>
+    <net code="94" name="Net-(U8-Pad11)">
+      <node ref="U8" pin="11" pintype="input"/>
+      <node ref="U8" pin="4" pintype="output"/>
+      <node ref="U8" pin="8" pintype="input"/>
+    </net>
+    <net code="95" name="RX_IN">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="96" name="SIDE_TONE">
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="U6" pin="3" pinfunction="Rosc/P2.5" pintype="bidirectional"/>
+    </net>
+    <net code="97" name="V+">
+      <node ref="C40" pin="1" pintype="passive"/>
+      <node ref="C47" pin="1" pintype="passive"/>
+      <node ref="C56" pin="1" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="R25" pin="2" pintype="passive"/>
+      <node ref="U10" pin="2" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U9" pin="2" pinfunction="VIN" pintype="power_in"/>
+    </net>
+    <net code="98" name="VCC">
+      <node ref="C36" pin="1" pintype="passive"/>
+      <node ref="L7" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="R24" pin="1" pintype="passive"/>
+      <node ref="R27" pin="1" pintype="passive"/>
+      <node ref="R28" pin="1" pintype="passive"/>
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="R31" pin="1" pintype="passive"/>
+      <node ref="R32" pin="1" pintype="passive"/>
+      <node ref="R33" pin="2" pintype="passive"/>
+      <node ref="U11" pin="2" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U22" pin="3" pinfunction="CA" pintype="input"/>
+      <node ref="U22" pin="8" pinfunction="CA" pintype="input"/>
+      <node ref="U6" pin="2" pinfunction="VCC" pintype="power_in"/>
+    </net>
+    <net code="99" name="unconnected-(U1-Pad5)">
+      <node ref="U1" pin="5" pinfunction="OUT_B" pintype="output+no_connect"/>
+    </net>
+    <net code="100" name="unconnected-(U1-Pad7)">
+      <node ref="U1" pin="7" pinfunction="OSC_E" pintype="output+no_connect"/>
+    </net>
+    <net code="101" name="unconnected-(U8-Pad1)">
+      <node ref="U8" pin="1" pintype="output+no_connect"/>
+    </net>
+  </nets>
+</export>

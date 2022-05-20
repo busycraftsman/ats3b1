@@ -1,0 +1,2916 @@
+;atsprint 3B dds
+;80/40/30/20/17/15 CW rig
+;written by Steven Weber, KD1JV
+;copywrite 8/15/07 all rights reserved
+
+;Digital mode Extensions by Vojtech Bubnik OK1IAK
+; 1/2007-8/2006
+
+;multi keyer memory locations by Mike, W1MT
+
+;rev version 2
+;warm boot fixed
+;rev version 3
+;80M DFE fixed
+
+;flag bit usage
+
+;             flags                   bflag
+;0001h        EN SIDE TONE        |   MORSE OUT, keep audio muted 
+;0002h        PADDLE FLAG         |   ADC INTERUPT HAPPENED
+;0004h        PADDLE FLAG         |   IF OFFSET DIRECTION
+;0008h        FAST TUNE           |   SPLIT ON
+;0010h        STRAIGHT KEY MODE   |   RIT mode
+;0020h        BLANK LED           |   XIT mode
+;0040h                            |   TEMP
+;0080h        BEACON MODE 1       |   ALT STRAIGHT KEY
+;0100h        DFE                 |   stealth paddle enable
+;0200h        KEYER MEM ON        |   TU/TD PADDLE
+;0400h        SEND MESSAGE (Tx)   |   REVESE PADDLE
+;0800h        BEACON MODE  2      |   MORSE ANNUNCIATION TURNED OFF
+;1000h        50hz                |   LED DISPLAY TURNED OFF
+;2000h        RIT50HZ             |   USE USER AFA SPEED
+;4000h                            |   IAMBIC A/B MODE
+;8000h        ALT STRAIGHT KEY    |   B MODE EXTRA ELEMENT FLAG
+;
+;
+;
+
+
+;led SEGMENTS
+
+;P3.0 = b             a
+;P3.1 = a           f   b
+;P3.2 = c             g
+;P3.3 = DP          e   c
+;P3.4 = e             d   DP
+;P3.5 = d
+;P3.6 = f
+;P3.7 = g
+;
+;
+;
+
+#include "msp430x12x2.h"
+
+#define   fbc_l     (0200h)
+#define   fbc_h     (0202h)
+#define   fbcd      (0204h)
+#define   llimit    (0206h)
+                            ; low band limit
+#define   hlimit    (0208h)
+                            ; cw seg band limit          
+#define   bhlimit   (020ah)
+                            ; high band limit
+#define   fref_l    (020ch) 
+                            ; DDS reference freq in binary
+#define   fref_h    (020eh) 
+                            ; DDS reference freq in bianry
+#define   ofst_l    (0210h) 
+                            ; IF offset freq, DDS phase word, low
+#define   ofst_h    (0212h) 
+                            ; IF offset freq, DDS phase word, high
+#define   speedk    (0214h)
+                            ; keyer speed constant
+#define   userk     (0216h) 
+                            ; keyer speed index pointer                         
+#define   spcnt     (0218h) 
+                            ; morse out speed, user preference 
+#define   bflag     (021ah) 
+                            ; second flag bit register                                                    
+#define   fbin_l    (021ch) 
+                            ; Tx DDS phase word, low 
+#define   fbin_h    (021eh)                           
+                            ; Tx DDS phase word, high                           
+#define   rxbin_l   (0220h) 
+                            ; Rx DDS phase word, low byte
+#define   rxbin_h   (0222h) 
+                            ; Rx DDS phase word, high byte
+#define   rit_lbn   (0224h) 
+                            ; Tx freq, rit temp  
+#define   rit_hbn   (0226h) 
+                            ; Tx freq, rit temp
+#define   rit_fb    (0228h) 
+                            ; Rx BCD freq, rit temp
+#define   flags     (022eh) 
+                            ; general flags bits
+#define   sktemp    (0230h) 
+                            ; temp reg
+#define   moutk     (0232h)  
+    
+#define   uart_rxdata (0234h)
+#define   uart_bitcnt (0236h)
+#define   uart_nbytes (0238h)
+#define   uart_cmd    (023ah)
+#define   uart_data0  (023ch)
+#define   uart_data1  (023eh)
+#define   uart_data2  (0240h)
+#define   uart_timeprev (0242h)                   
+#define   FLU          (0244h)
+
+#define   uartmodbits (0246h)
+                            ; Number of modulate command bits
+#define   tonesp_l (0248h)
+                            ; Tone spacing
+#define   tonesp_h (024ah) 
+                            ; Tone spacing
+
+
+#define PI_DAH      01h,&P2IN
+#define PI_DIT      02h,&P2IN
+#define PI_TUNEUP   04h,&P2IN
+#define PI_SPLIT    01h,&P1IN
+
+#define PO_SIDETONE 020h,&P2OUT
+
+#define PI_MENU     02h,&P1IN
+#define PI_TUNEDN   04h,&P1IN
+#define PO_TRANSMIT 08h,&P1OUT
+#define PO_SDATA    010h,&P1OUT
+#define PO_SCLK     020h,&P1OUT
+#define PO_FSYNC    040h,&P1OUT
+#define PO_MUTE     080h,&P1OUT
+
+
+
+#define   data_end      (020ah)
+#define   rammem        (024ch)
+#define   ramend        (02c8h)
+#define   flash_rammem  (01000h)
+#define   flash_fref    (01080h)
+#define   flash_ofst    (01084h)
+#define   flash_bflags  (01088h)
+#define   flash_morse   (0108ah)
+
+#define   FL_SIDETONE   (0001h)
+#define   FL_PADDLE1    (0002h)
+#define   FL_PADDLE2    (0004h)
+#define   FL_FASTUNE    (0008h)
+#define   FL_STRKEY     (0010h)
+#define   FL_BLANK      (0020h)
+#define   FL_BEACON1    (0080h)
+#define   FL_DFE        (0100h)
+#define   FL_KMon       (0200h)
+#define   FL_TxKm       (0400h)
+#define   FL_BEACON2    (0800h)
+#define   FL_50HZ       (01000h)
+#define   FL_RIT50HZ    (02000h)
+
+
+#define   FLB_KEEPMUTE  (0001h)
+#define   FLB_ADCINT    (0002h)
+#define   FLB_OFFSETSUB (0004h)
+#define   FLB_RITXIT    (0008h)
+#define   FLB_RIT       (0010h)
+#define   FLB_XIT       (0020h)
+#define   FLB_TEMP      (0040h)
+#define   FLB_ALTSTKY   (0080h)
+#define   FLB_ENALTPAD  (0100h)
+#define   FLB_ALTPAD    (0200h)
+#define   FLB_REVPAD    (0400h)
+#define   FLB_NOMRS     (0800h)
+#define   FLB_NOLED     (01000h)
+#define   FLB_I_A_B     (04000h)
+#define   FLB_EXTRAEL   (08000h)
+
+
+
+
+
+#define   FLU_UART       (0001h)
+#define   FLU_SENDMEM    (0002h)
+#define   FLU_DIGITX     (0004h)
+#define   FLU_DIGIEND    (0008h)
+#define   FLU_UARTERR    (0010h)
+#define   FLU_LASTREG    (0020h)
+#define   FLU_MFSK       (0040h)
+#define   FLU_TMP        (0080h)
+#define   FLU_ONE        (0100h)
+#define   FLU_ZERO       (0200h)
+#define   FLU_DIGION     (01000h)
+
+
+#define   LED_d           04ah,&P3OUT
+#define   LED_S           019h,&P3OUT
+#define   LED_n           06bh,&P3OUT
+#define   LED_P           02ch,&P3OUT
+#define   LED_F           02dh,&P3OUT
+#define   LED_t           00fh,&P3OUT
+#define   LED_E           00dh,&P3OUT
+#define   LED_C           08dh,&P3OUT
+#define   LED_A           028h,&P3OUT
+#define   LED_b           00bh,&P3OUT
+#define   LED_BLANK       0ffh,&P3OUT
+#define   DP              (04h)
+#define   LED_1           0fah,&P3OUT
+#define   LED_2           04ch,&P3OUT
+#define   LED_3           058h,&P3OUT
+#define   LED_4           03ah,&P3OUT
+#define   LED_5           019h,&P3OUT
+#define   LED_6           00bh,&P3OUT
+#define   LED_7           0f8h,&P3OUT
+#define   LED_8           008h,&P3OUT
+#define   LED_9           038h,&P3OUT
+#define   LED_0           088h,&P3OUT
+
+ORG 0FFFEh
+DW  reset
+ORG 0fffch    ; NMI
+ORG 0fff6h    ; Comparator_A
+ORG 0fff4h    ; Watchdog
+ORG 0fff2h    ; Timer_A3 - TACCR0 CCIFG
+DW  CCIFG_0_HND
+ORG 0fff0h    ; Timer_A3 - TACCR1 CCIFG, TACCR2 CCIFG, TAIFG
+DW  TA_HND
+ORG 0ffe6h    ; IO Port P2
+DW  P2CHANGE
+ORG 0FFE4h    ; IO Port P1
+DW  P1CHANGE
+ORG 0FFEAh
+DW  ADC10
+
+
+
+ORG 0e000h  ;8K boundry
+
+CCIFG_0_HND:  add.w #27, &TACCR0    ; set time of the next interrupt
+              bit.w #CAP, &TACCTL0  ; which mode, capture or compare?
+              jz    CCIFG_0_HND1    ; jump if compare
+              bic.w #CAP, &TACCTL0  ; switch to compare mode
+              reti
+              
+CCIFG_0_HND1: inc   r6              ; incerment delay counter
+              dec   r4              ; decerment code speed constant
+              jnz   text            ; exit if not zero
+              inc   r5              ; incerment dot time counter
+              mov   &moutk,r4       ; reload code speed constant
+text:         bit   #FL_SIDETONE,&flags ; check for side tone enabled
+              jnc   nost
+              xor.b #PO_SIDETONE    ; toggle sidetone port pin
+nost:         reti
+
+TA_HND:       add   &TAIV,PC        ; Add offset to Jump table
+              reti                  ; Vector 0: No interrupt
+              jmp   CCIFG_1_HND     ; Vector 2: TACCR1
+              reti                  ; Vector 4: TACCR2
+              reti                  ; Vector 8: Reserved
+              reti                  ; Vector 10: TAIFG Flag
+              reti                  ; Vector 6: Reserved
+
+CCIFG_1_HND:
+              push    r15
+              mov.w   &TACCR1, r15               ; Save current captured time
+              sub     &uart_timeprev, r15        ; Calculate time difference
+              mov.w   &TACCR1, &uart_timeprev    ; Save current time
+              cmp     #04, r15
+              jl      CCFIG_1_HND_ERR            ; Time < 4/32768 = 0.12ms
+              cmp     #21, r15
+              jge     CCFIG_1_HND_ERR            ; Time >= 21/32768 = 0.64ms
+              cmp     #12, r15
+              jge     CCFIG_1_HND_VAL1           ; Time >= 12/32768 = 0.37ms
+              bit     #0100h, &uart_bitcnt
+              jc      CCFIG_1_HND_VAL0
+              bis     #0100h, &uart_bitcnt       ; Set the bit0 to 1 to indicate that half of the "0" bit was received
+              jmp     CCIFG_1_HND_END
+CCFIG_1_HND_VAL0:                                ; Bit "0" received
+              bic     #0100h, &uart_bitcnt
+              bit     #0ffh, &uart_bitcnt
+              jz      CCFIG_1_HND_START          ; Start bit received
+              clrc
+              jmp     CCFIG_1_HND_ADDBIT
+CCFIG_1_HND_VAL1:                                ; Bit "1" received
+              bit     #0100h, &uart_bitcnt
+              jc      CCFIG_1_HND_ERR            ; Half of "0" received followed by "1"
+              bit     #0ffh, &uart_bitcnt        ; Bit "1" received, but waiting for the start bit
+              jz      CCFIG_1_HND_ERR
+              setc
+CCFIG_1_HND_ADDBIT:
+              rrc.w   &uart_rxdata               ; Add the received bit to MSB and rotate right
+              dec.w   &uart_bitcnt
+              jnz     CCIFG_1_HND_END
+              pop     r15
+              bis     #FLU_UART, &FLU           ; Indicate that the UART character has been received.
+              bic     #CCIFG, &TACCTL1           ; Clear the interrupt flag if it was generated by the previous statement.
+              bic     #CPUOFF+SCG1+SCG0,0(SP)    ; Wake up after return from interrupt to eat the received data.
+              reti
+
+CCFIG_1_HND_START:                               ; Start bit
+              clr     &uart_rxdata
+              mov.w   &uartmodbits, &uart_bitcnt ; Only 3 data bits in modulate mode
+              bit     #FLU_DIGITX, &FLU
+              jc      CCIFG_1_HND_END            ; Modulate mode
+              mov.w   #09, &uart_bitcnt          ; Command mode, expect 8 data bits
+              jmp     CCIFG_1_HND_END
+CCFIG_1_HND_ERR:
+              clr     &uart_bitcnt               ; Indicate waiting for the start bit
+CCIFG_1_HND_END:
+              pop     r15
+              reti
+   
+;**************************
+;PORT PIN CHANGE
+;*************************   
+P2CHANGE:   bit     #FLU_DIGION,&FLU
+            jnc     P2CHANGE1
+            bit     #FL_STRKEY, &flags        ; Test for straight key and UART mode.
+            jc      P2CHANGE1
+           
+            bit.b   #01h,&P2IFG               ; Straight key. Was the interrupt caused by a falling edge of DAH?
+            jz      P2CHANGE2                 ; No
+            xor.b   #01h, &P2IES              ; Change direction of the edge on DAH (falling to raising and vice versa)
+            bic.b   #01h, &P2IFG              ; Clear the status of DAH.
+            xor     #CCIS_1, &TACCTL1         ; Initiate capture of timer1.
+            bit.b   #06h, &P2IFG
+            jnz     P2CHANGE2                 ; If some interrupt pending, wake up.
+            reti
+            
+P2CHANGE1:  bic.b   #01h,&P2IE                ; Not in straight key and UART mode, clear interrupt enable of DAH
+            bic.b   #01h,&P2IFG
+P2CHANGE2:  bic.b   #06h,&P2IE                ; Do not clear interrupt enable of DAH
+            bic.b   #06h,&P2IFG
+            bic     #CPUOFF+SCG1+SCG0,0(SP)   ; wake up after return from interrupt
+            reti
+
+P1CHANGE:   bic.b   #07h,&P1IFG
+            bic.b   #07h,&P1IE
+            bic     #CPUOFF+SCG1+SCG0,0(SP)   ; wake up after return from interrupt
+            reti
+
+         
+       
+ADC10:    bis     #FLB_ADCINT,&bflag
+          reti   
+     
+;****************************************
+; configure MPU 
+;*****************************************
+
+reset:    mov     #0300h,SP
+          mov     #WDTPW+WDTHOLD,&WDTCTL
+          mov.b   #0f8h,&P1DIR
+          mov.b   #0e0h,&P1OUT
+          mov.b   #020h,&P2DIR
+          clr.b   &P2OUT
+          mov.b   #0ffh,&P3DIR
+          mov.b   #0ffh,&P3OUT
+        
+          mov.b   #DCO0+DCO1+DCO2,&DCOCTL      ; maximum speed
+          mov.b   #RSEL0+RSEL1+RSEL2,&BCSCTL1
+  
+          mov     #TASSEL_1+MC_2,&TACTL         ; ACLK, continuous
+          mov     #CCIE, &TACCTL0               ; enable interrupts of timer0
+          mov     #CAP+SCS+CCIS_2+CM_3+CCIE,&TACCTL1 ; enable interrupts of timer1, set to capture mode
+          bis.w   #TACLR,&TACTL         
+          
+          mov     #27,&TACCR0
+         
+          mov.b   #018h,&ADC10AE
+          mov     #03c78h,&ADC10CTL0  ; init adc
+          mov.b   #00h,&P1IE      ; Disable interrupts on pin changes
+          mov.b   #00h,&P2IE
+          mov.b   #07h,&P1IES     ; P1.1 and P1.2 - interrupt on falling edge
+          mov.b   #07h,&P2IES     ; P2.0 to P2.2 - interrupt on falling edge
+      
+          eint
+          cmp     #0393h,&fref_h
+          jne     c_boot
+          cmp     #014fh,&ofst_h
+          jne     c_boot
+          mov.b   #LED_E
+ovload:   bit.b   #PI_MENU
+          jc      ovload
+          mov.b   #LED_BLANK
+ov_1:     bit.b   #PI_MENU
+          jnc     ov_1
+          mov     #02100h,r15   ;int DDS chip
+          call    #out16
+          call    #offset
+          mov     #02000h,r15
+          call    #out16
+          jmp     wait1
+         
+c_boot:   clr     &flags
+          clr     &FLU
+       
+rstent:   mov     #02100h,r15   ;int DDS chip
+          call    #out16
+          
+                
+         
+        
+          clr     r6
+rstdly:   cmp     #0140h,r6   ; start up delay -let switch debounce caps charge
+          jne     rstdly
+          
+ 
+          
+;********************************************
+; retreve user option setings 
+;********************************************* 
+uset:     mov     #flash_fref,r8
+          mov     #fref_l,r9
+mcdata:   mov     @r8+,0(r9)
+          incd    r9
+          cmp     #bflag+2,r9
+          jne     mcdata
+          cmp     #0ffffh,&fref_h
+          jne     data_ok
+
+
+         
+;****************************************
+;load default values if not calibrated
+;************************************** 
+
+          mov     #default,r8
+          mov     #fref_l,r9
+mddata:   mov     @r8+,0(r9)
+          incd    r9
+          cmp     #bflag,r9
+          jne     mddata
+          clr     &bflag
+          jmp     data_ok
+
+default:  DW      08700h  ; 60MHz ref freq in hex
+          DW      0393h
+          
+          DW      0829bh  ; 4.914700 MHz phase word at 60MHz ref
+          DW      014fh
+  
+          DW      0018h   ;KEYER SPEED
+          DW      0018h   ;KEYER SPEED         
+          DW      000dh   ;KEYER SPEED POINTER
+  
+   
+data_ok: bis      #FLB_KEEPMUTE,&bflag
+   
+   
+;***************************
+; test for calibrate mode
+;******************************   
+   
+rst0:     clr   r6
+rst0a:    cmp   #0200h,r6
+          jne   rst0a
+          mov.b &P1IN,r13
+
+          bic   #0fffah,r13     ; ck for split and Tune up
+
+          cmp   #0000h,r13
+          jne   rst2
+          br    #calref         ;branch to calibrate mode if split and tune up depressed
+
+;************************
+;test for straight key 
+;*************************
+        
+rst2:     bit.b #PI_DAH
+          jc    rst3
+          bis   #FL_STRKEY,&flags
+          
+;********************************
+;test for band, load band vaues
+;********************************
+          bit.b   #PI_MENU
+          jc      rst3
+  
+          mov     #01100h,r14
+          call    #mrsout
+          mov     #02300h,r14  ;version3
+          call    #mrsout
+        
+rst3:     mov   #04028h,&ADC10CTL1  ; int adc
+          bis   #0003h,&ADC10CTL0   ; start adc
+adwait1:  bit   #FLB_ADCINT,&bflag       ;wait for conversion complete
+          jnc   adwait1
+          bic   #FLB_ADCINT,&bflag       ;clear flag
+          bic   #0002h,&ADC10CTL0   ;clear adc enable
+          bic   #0030h,&ADC10CTL0   ;turn off ref and adc core
+          cmp   #0300h,&ADC10MEM    ;compare ADC result to find band 
+          jge   bint80
+          cmp   #0200h,&ADC10MEM
+          jge   bint40
+          cmp   #0100h,&ADC10MEM
+          jge   bint30
+          cmp   #0060h,&ADC10MEM
+          jge   bint20
+          cmp   #015h,&ADC10MEM
+          jge   bint17
+                       
+bint15:   mov   #bn15,r8
+          mov   #02000h,r14
+          mov   #0019h,r10
+          jmp   bntst4
+         
+bint17:   mov   #bn17,r8
+          mov   #03800h,r14
+          mov   #00f8h,r10
+          jmp   bntst4         
+
+bint20:   mov   #bn20,r8
+          mov   #02700h,r14
+          mov   #004ch,r10
+          jmp   bntst4
+          
+bint30:   mov   #02300h,r14
+          mov   #0058h,r10
+          mov   #bn30,r8
+          jmp   bntst4         
+              
+bint40:   mov   #bn40,r8
+          mov   #02100h,r14
+          mov   #003ah,r10
+          jmp   bntst4 
+        
+bint80:   bis   #FLB_OFFSETSUB,&bflag
+          mov   #bn80,r8
+          mov   #03c00h,r14
+          mov   #0008h,r10
+               
+bntst4:   call  #band_data
+          mov.b r10,&P3OUT
+          call  #mrsout
+  
+          call  #bindiv
+          mov   &fbin_l,r15
+          mov   &fbin_h,r14
+          call  #offset
+          mov   #02000h,r15
+          call  #out16
+                 
+          bic   #FLB_KEEPMUTE,&bflag
+          bis.b #PO_MUTE
+          mov.b #LED_BLANK
+          jmp   wait1
+          
+band_data: 
+        mov     #fbc_l,r9
+bd_da:  mov     @r8+,0(r9)
+        incd    r9
+        cmp     #data_end+2,r9
+        jne     bd_da
+        ret 
+ 
+bn80    DW      05240h  ;low bits of start up freq in binary
+        DW      0036h   ;high bits of start up freq
+        DW      05600h  ;BCD value of start up freq
+        DW      04999h  ;lower tuning limit
+        DW      06000h  ;CW upper tuning limit
+        DW      08999h  ;high band limit
+        
+bn40    DW      044f0h
+        DW      0006bh
+        DW      00300h
+        DW      09999h
+        DW      01500h
+        DW      03000h
+
+bn30    DW      04430h
+        DW      009ah
+        DW      01100h
+        DW      00999h
+        DW      01500h
+        DW      01500h
+
+bn20    DW      089e0h
+        DW      00d6h
+        DW      0600h
+        DW      09999h
+        DW      01500h
+        DW      03500h
+             
+bn17    DW      0b9f0h
+        DW      0113h
+        DW      0700h
+        DW      0680h
+        DW      01100h
+        Dw      01680h
+        
+bn15    DW      059a0h
+        DW      0141h
+        DW      0600h
+        DW      09999h
+        DW      02000h 
+        DW      05000h 
+
+              
+;*******************************
+;switch input polling routine
+;**********************************        
+        
+wait1:    bic   #FL_FASTUNE,&flags ;clear fast tune flag
+
+;****************************************
+;SLEEP SET UP
+;****************************************
+
+            bit    #FLU_DIGION,&FLU ; Test for straight key or UART mode.
+            jc      wait1b            ; Skip initialization of interrupt flags on DAH, which is the UART RX pin.
+            bic.b   #01h,&P2IFG       ; No straight key, clear interrupt flag for DAH
+            bis.b   #01h,&P2IE    
+
+
+wait1b:   bic.b   #06h,&P2IFG
+          bis.b   #06h,&P2IE
+          
+          bic.b   #07h,&P1IFG
+          bis.b   #07h,&P1IE
+          
+          mov.b   #00h,&DCOCTL 
+          bis     #CPUOFF+SCG1+SCG0,SR          
+          mov.b   #DCO0+DCO1+DCO2,&DCOCTL
+          
+wait:     bit     #FLU_DIGITX, &FLU
+          jnc     waitnd
+          bit     #FLU_DIGIEND, &FLU    ; End of digital transmition signalized?
+          jc      xdigiend
+          bit     #FLU_UART, &FLU        ; Indicate that the UART character has been received.
+          jc      xdigimod                ; Modulate
+;FIXME add check of buttons here to stop transmition
+          br      #wait1
+           
+waitnd:     bit     #FLU_UART,&FLU         ; Indicate that the UART character has been received.
+            jnc     waita
+
+            bic     #FLU_UART,&FLU
+            rlc     &uart_rxdata
+            jnc     uart_err                ; stop bit is wrong, framing error
+            bic     #000ffh, &uart_rxdata
+            cmp     #0fe00h, &uart_rxdata
+            jz      uart_start              ; start of the frame
+            bit     #FLU_UARTERR, &FLU
+            jc      uart_err                ; error was indicated, ignore rest of the frame
+            cmp     #0fd00h, &uart_rxdata
+            jz      uart_end                ; end of the frame
+            cmp     #00h, &uart_cmd
+            jnz     uart_drcv               ; receive data
+            cmp     #00h, &uart_rxdata
+            jz      uart_err                ; command = 0, error
+            mov     &uart_rxdata, &uart_cmd
+            swpb    &uart_cmd
+            br      #wait1
+            
+uart_drcv:  cmp     #06,&uart_nbytes
+            jz      uart_err                ; more than 6 bytes received
+            mov     &uart_nbytes, R7
+            bit     #01h, r7
+            bic     #01h, r7
+            jc      uart_odd
+            swpb    &uart_rxdata
+            clr     uart_data0(R7)
+uart_odd:   add     &uart_rxdata, uart_data0(R7)
+            inc     &uart_nbytes
+            br      #wait1
+uart_err:   bis     #FLU_UARTERR, &FLU    ; Inidicate framing error, ignore this command.
+            br      #wait1
+uart_start: clr     &uart_nbytes            ; Start of the command frame
+            clr     &uart_cmd
+            bic     #FLU_UARTERR, &FLU
+            br      #wait1
+uart_end:
+;#ifdef HAS_UART_PLAY
+              cmp     #01h, &uart_cmd         ; Command 01h - echo morse
+              jnz     uart_end2
+              cmp     #00h, &uart_nbytes      ; Play only if there is something to play.
+              jz      uart_endend
+              br      #uart_play
+;#endif ; HAS_UART_PLAY
+uart_end2:    bic     #FLU_TMP, &FLU
+              cmp     #04h, &uart_cmd         ; Command 04h - start BPSK
+              jz      uart_bpsk
+              cmp     #05h, &uart_cmd         ; Command 05h - start MFSK
+              jz      uart_mfsk
+              cmp     #02h, &uart_cmd         ; Command 02h - setfreq
+              jz      uart_setfreq
+;#ifdef HAS_UART_FSET_ECHO
+              cmp     #03h, &uart_cmd         ; Command 03h - setfreq, echo freq
+              jnz     uart_endend
+              bis     #FLU_TMP, &FLU
+;#endif ; HAS_UART_FSET_ECHO
+              jmp     uart_end
+              
+uart_play:    clr     r7
+uart_play2:   mov     uart_data0(r7),r14          ; Play the received character
+              swpb    r14
+              bic     #00ffh, r14
+              call    #mrsout
+              dec     &uart_nbytes
+              jz      uart_end2
+              mov     uart_data0(r7),r14         ; Play the received character
+              bic     #00ffh, r14
+              call    #mrsout
+              incd    r7
+              dec     &uart_nbytes
+              jnz     uart_play2
+              br      #wait1
+
+
+uart_setfreq: cmp     #04h, &uart_nbytes      ; 4 bytes expected, otherwise error
+              jne     uart_endend
+              bic     #FLB_RITXIT+FLB_RIT+FLB_XIT,&bflag ; switch off RIT/XIT
+              call    #decode_bcdfreq           ; decode uart_data0, uart_data1 to r12, r13
+              mov     r12, &fbc_l
+              mov     r13, &fbc_h
+              call    #bindiv                   ; fbc_{l,h} to fbin_{l,h}
+              mov     &fbin_l, r15
+              mov     &fbin_h, r14
+              call    #offset                   ; Go figure LO freq and update DDS
+              mov     #02000h, r15              ; DDS out - set bit 28
+              call    #out16
+         
+;#ifdef HAS_UART_FSET_ECHO
+              bit     #FLU_TMP, &FLU
+              jnc     uart_endend
+              br      #mfrqout
+;#else ; HAS_UART_FSET_ECHO
+              jmp     uart_endend
+;#endif ; HAS_UART_FSET_ECHO
+
+uart_mfsk:    cmp     #03h, &uart_nbytes      ; 3 bytes expected, otherwise error
+              jne     uart_endend
+              cmp     #11, &uart_data1
+              jge     uart_endend             ; only 9 frequency spacings are allowed
+              bis     #FLU_MFSK, &FLU
+              mov     #07h, &uartmodbits      ; Number of UART bits including stop bit for MFSK commands
+              mov     #freqshifttbl, r8       ; initalize table pointer
+              rla     &uart_data1             ; address in words, <<= 1
+              add     &uart_data1, r8         ; add in offset
+              mov     @r8, r9                 ; get value in table
+              clr     r10
+              call    #bindiv2                ; calculate new fbin_{l,h} phase increment
+              mov     &fbin_l, &tonesp_l      ; save tone spacing phase increment
+              mov     &fbin_h, &tonesp_h
+              bit     #FLB_OFFSETSUB, &bflag
+              jc      uart_bpska              ; LSB, negative tone spacing
+              inv     &tonesp_l               ; USB, positive tone spacing
+              inv     &tonesp_h
+              inc     &tonesp_l
+              adc     &tonesp_h
+              jmp     uart_bpska
+
+uart_bpsk:    bic     #FLU_MFSK, &FLU
+              mov     #4h, &uartmodbits       ; Number of UART bits including stop bit for PSK commands
+              cmp     #02h, &uart_nbytes      ; 2 bytes expected, otherwise error
+              jne     uart_endend
+uart_bpska:   bic     #FLB_RITXIT+FLB_RIT+FLB_XIT,&bflag ; switch off RIT/XIT
+              clr     r12                     ; Convert the BCD frequency to binary
+              clr     r13
+              mov     &uart_data0, r8         ; convert lower 4 digits
+              mov     #4, r9                  ; loop counter, 4 digits
+              call    #bcd2bin32
+              mov     &fbc_h, r10             ; high word of the DDS phase increment
+              mov     &fbc_l, r9              ; low word of the DDS phase increment
+              cmp     #4999, r12
+              jn      uart_bpsk1              ; the offset is positive
+              mov     r12, r8                 ; offset is negative, calculate abs
+              mov     #10000, r12
+              sub     r8, r12                 ; r12 = abs(r12) ... r12 = 10000 - r12
+              bit     #FLB_OFFSETSUB, &bflag
+              jnc     uart_bpskp              ; LSB, add abs(offset)
+              jmp     uart_bpskm              ; USB, subtract abs(offset)
+uart_bpsk1:   bit     #FLB_OFFSETSUB, &bflag
+              jc      uart_bpskp              ; USB, add offset
+uart_bpskm:   sub     r12, r9                 ; subtract offset
+              sbc     r10
+              jmp     uart_bpsk2
+uart_bpskp:   add     r12, r9                 ; add offset
+              adc     r10
+uart_bpsk2:   call    #bindiv2                ; calculate new fbin_{l,h} value
+              call    #txdds                  ; feed DDS register 2 with the carrier frequency
+              bis     #FLU_DIGITX, &FLU
+              bic     #FLU_DIGIEND, &FLU
+              mov     #02838h, r15            ; txfreq - B28, FSEL, OPBITEN, SIGN, DIV2 - txfreq
+              call    #out16
+                                              ; do not key the transmitter down yet
+              bic.b   #PO_MUTE                ; mute
+
+;uart_end3:
+uart_endend:  br      #wait1                    ; No known command
+
+xdigiend:     br      #digiend
+xdigimod:     br      #digimod
+
+freqshifttbl: DW     2000 ;   7.8125 << 8, DominoEX, MFSK16, ThrobX
+              DW     2048 ;   8.000  << 8, Throb
+              DW     2756 ;  10.766  << 8, DominoEX
+              DW     4000 ;  15.625  << 8, MFSK16, DominoEX, ThrobX
+              DW     4096 ;  16.000  << 8, Throb
+              DW     5512 ;  21.533  << 8, DominoEX
+              DW     8000 ;  31.25   << 8, Olivia, DominoEX
+              DW    16000 ;  62.5    << 8, Olivia
+              DW    32000 ; 125      << 8, Olivia
+              DW    43520 ; 170      << 8, RTTY
+              DW    51200 ; 200      << 8, RTTY
+          
+waita:    bit     #FLU_DIGION,&FLU
+          jc      wait4
+          bit     #FL_STRKEY,&flags ;test for straight key mode
+          jnc     wait3  
+          bit.b   #PI_DIT       ;test for straight key input
+          jnc     stky
+          jmp     wait4
+        
+stky:     br      #strkey       ;jump to straigt key transmit
+       
+wait3:    bit.b   #PI_DIT       ;paddle input test
+          jnc     paddle_dt
+          bit.b   #PI_DAH       ;paddle input test
+          jnc     paddle_dh
+
+wait4:    bit.b   #PI_SPLIT     ;RIT button test
+          jnc     rit
+          bit.b   #PI_TUNEUP    ;tune up button test
+          jnc     tnup
+          bit.b   #PI_TUNEDN    ;tune down button test
+          jnc     tndn
+          bit.b   #PI_MENU      ;menu button test
+          jnc     fun
+          jmp     wait1         ;back to top of switch test loop
+
+
+paddle_dt:  bit   #FLB_ALTSTKY,&bflag
+            jc    wait4               ;stay in do nothing loop
+            bis   #FL_PADDLE2,&flags  ;set dot flag
+            br    #padin ;branch to the paddle routine
+            
+paddle_dh:  bit   #FLB_ALTSTKY,&bflag
+            jc    stky
+            bis   #FL_PADDLE1,&flags  ;set dash flag
+            br    #padin
+
+     
+
+
+;********************************
+;tune up routine
+;**********************************
+
+tnup:     bit     #FLB_ENALTPAD,&bflag
+          jc      paddle_dh
+          cmp     &bhlimit,&fbcd    ;check for high tuning limit
+          jeq      tnj_2
+          cmp     &hlimit,&fbcd
+          jne     tnok
+          mov     #0200h,r14
+          call    #mrsout
+          jmp     tnok
+        
+tnj_2:    mov     #0400h,r14      ;sound beep beep if at limit
+          call    #mrsout
+          br      #wait1
+          
+tnok:     bit     #FL_FASTUNE,&flags  ;test for fast tune flage
+          jc      ftu
+          add     #0032h,&fbc_l  ;add 50 to binary freq word
+          adc     &fbc_h          ;add carry
+          bit     #(FL_50HZ),&flags
+          dadc    &fbcd
+          xor     #(FL_50HZ),&flags         
+          bit     #FL_DFE,&flags  ;test for DFE mode
+          jnc     tu1
+          br      #calnf         ;branch if in DFE mode
+tu1:      call    #test1Kst
+tu2:      call    #bindiv       ;go calculate new phase word
+          call    #offset       ;go figure LO freq and update DDS
+          clr     r6            ;clear delay counter
+       
+tu_lp2:   bit.b   #PI_TUNEUP    ;test for tune up switch still closed
+          jc      wait1         ;jump out if switch open
+          bit     #FL_FASTUNE,&flags ;test if already in fast tune mode
+          jc      tu_lp1        ;jump to fast tune if so
+          cmp     #04b0h,r6     ;time to enter fast tune mode
+          jne     tu_lp2        ;jump out if time not yet reached
+          bis     #FL_FASTUNE,&flags ;set fast tune flag
+          jmp     tnup          ;tune up again
+tu_lp1:   cmp     #00ach,r6     ;fast tune rate delay count
+          jne     tu_lp1        ;loop
+          jmp     tnup    
+        
+ftu:      add     #0064h,&fbc_l ;add 100 if in fast tune
+          adc     &fbc_h
+          clrc
+          dadd    #1,&fbcd
+          call    #test1K
+          jmp     tu2
+   
+;********************************
+;tune down routine
+;**********************************   
+   
+   
+tndn:     bit     #FLB_ENALTPAD,&bflag
+          jc      paddle_dt
+          bit     #0008h,&bflag
+          jc      tdok
+          cmp     &hlimit,&fbcd
+          jeq     tdj_3      
+          cmp     &llimit,&fbcd
+          jne     tdok
+        
+tdj_2:    mov     #0400h,r14
+          call    #mrsout 
+          br      #wait1    
+          
+tdj_3:    mov     #0200h,r14
+          call    #mrsout
+                         
+
+tdok:     bit     #FL_FASTUNE,&flags
+          jc      ftd
+          sub     #0032h,&fbc_l
+          subc    #0,&fbc_h
+          bit     #(FL_50HZ),&flags
+          dadd    #09999h,&fbcd
+          xor     #(FL_50HZ),&flags
+          bit     #FL_DFE,&flags
+          jnc     td1
+          br      #calnf
+td1:      call    #test1Kst
+td2:      call    #bindiv
+          call    #offset
+          clr     r6
+       
+td_lp2:   bit.b   #PI_TUNEDN
+          jc      wait1
+          bit     #FL_FASTUNE,&flags
+          jc      td_lp1
+          cmp     #04b0h,r6
+          jne     td_lp2
+          bis     #FL_FASTUNE,&flags
+          jmp     tndn
+td_lp1:   cmp     #00ach,r6
+          jne     td_lp1
+          jmp     tndn   
+
+ftd:      sub     #0064h,&fbc_l
+          subc    #0,&fbc_h
+          clrc
+          dadd    #09999h,&fbcd
+          call    #test1K
+          jmp     td2      
+   
+test1Kst: bit     #FL_50HZ,&flags
+          jc      t1tb   
+test1K:   bit     #0008h,&bflag
+          jnc     t1tb
+t1tc:     mov     &fbcd,r14
+          cmp     #0,r14
+          jeq     dbeep
+          bic     #0fff0h,r14
+          cmp     #0,r14
+          jeq     beep
+ t1tb:    ret
+ 
+beep:     mov     #0200h,r14
+          call    #mrsout
+          ret     
+               
+dbeep:    mov.b   #LED_0
+          clr     r6
+dbwait:   cmp     #00ffh,r6
+          jne     dbwait
+          mov.b   #0f7h,P3OUT     ;clear all segments but DP
+          ret
+        
+;********************************
+; RIT routine
+;*********************************        
+kmemo:    br      #kmemout       
+        
+rit:      clr     r6            ;clear delay counter
+r_lp1:    bit.b   #PI_SPLIT     ;test for rit button closed
+          jc      kmemo         ;jump out if open
+          cmp     #025ah,r6     ;wait for this delay time
+          jne     r_lp1
+          bit     #0008h,&bflag ;exit and turn off split mode if already on
+          jc      xrexit
+          mov     #0a00h,r14
+          call    #mrsout
+r_lp2:    bit.b   #PI_SPLIT
+          jc      rit1      
+          cmp     #0600h,r6
+          jne     r_lp2
+          jmp     xit
+  
+rit1:     bit     #FLU_DIGION,&FLU
+          jc      xit2
+          bis     #0018h,&bflag  ;set rit flag
+          bic.b   #08h,&P3OUT
+xit3:     mov     &fbc_l,&rit_lbn
+          mov     &fbc_h,&rit_hbn
+          mov     &fbcd,&rit_fb
+          bic     #(FL_RIT50HZ), &flags
+          bit     #(FL_50HZ), &flags
+          jnc     xit3a
+          bis     #(FL_RIT50HZ), &flags
+xit3a:    clr     &fbcd
+          bic     #(FL_50HZ),&flags
+          
+xit2:     bit.b   #PI_SPLIT
+          jnc     xit2
+          br      #wait1
+         
+xit:      bis     #0028h,&bflag  ;set xit flag
+          bic.b   #08h,&P3OUT
+          mov     #01900h,r14
+          call    #mrsout
+          jmp     xit3
+
+xrexit:   bic     #0038h,&bflag
+          bis.b   #08h,&P3OUT
+          mov     &rit_lbn,&fbc_l
+          mov     &rit_hbn,&fbc_h
+          mov     &rit_fb,&fbcd
+          bic     #(FL_50HZ), &flags
+          bit     #(FL_RIT50HZ), &flags
+          jnc     xrexit1
+          bis     #(FL_50HZ), &flags
+xrexit1:  call    #bindiv
+          call    #offset
+          mov     #0200h,r14
+          call    #mrsout
+          jmp     xit2 
+  
+;**************************************
+; Menu button functions
+;****************************************  
+  
+fun:      clr     r6
+fun_lp1:  bit.b   #PI_TUNEUP
+          jnc     batV
+          bit     #FLU_DIGION,&FLU
+          jc      fun_l1
+          bit.b   #PI_SPLIT
+          jnc     enfreq
+          bit.b   #PI_TUNEDN
+          jnc     etune
+fun_l1:   cmp     #02b0h,r6
+          jne     fun_lp1
+        
+          bit.b   #PI_MENU
+          jc      afa       ;frequency
+         
+          bit     #FLU_DIGION,&FLU
+          jc      dig_ext
+         
+          mov     #0800h,r14 ; annunciate an "S"
+          mov.b   #LED_S
+          call    #mrsout
+          
+          clr     r6
+          
+fun_lp2:  bit.b   #PI_MENU
+          jc      cdsp       ;speed
+          cmp     #02b0h,r6
+          jne     fun_lp2
+         
+          mov     #0700h,r14 ;M keyer memory entry
+          mov.b   #LED_n
+          call    #mrsout
+          clr     r6
+        
+fun_lp3:  bit.b   #PI_MENU
+          jc      kmemint
+          cmp     #002b0h,r6
+          jne     fun_lp3
+          
+fun_lp4a: mov.b   #LED_d
+          mov     #0c00h,r14  ; D digital modes
+          call    #mrsout
+          
+          clr     r6
+
+
+fun_lp4:  bit.b   #PI_MENU
+          jc      dig_int
+          cmp     #002b0h,r6
+          jne     fun_lp4          
+                   
+          mov     #01600h,r14 ;P program user preferences
+          mov.b   #LED_P
+          call    #mrsout
+          clr     r6
+        
+fun_lp7:  bit.b   #PI_MENU
+          jc      setup
+          cmp     #02b0h,r6
+          jne     fun_lp7
+          
+          mov.b   #LED_A
+          mov     #0500h,r14
+          call    #mrsout
+          clr     r6
+          
+fun_lp8:  bit.b   #PI_MENU        
+          jc      alt_pad
+          cmp     #02b0h,r6
+          jne     fun_lp8
+          
+mdexit:   mov     #01900h,r14 ; X eXit menu
+          mov.b   #LED_BLANK
+          call    #mrsout
+          
+fun_lp10: bit.b   #PI_MENU
+          jnc     fun_lp10
+          br      #wait1
+        
+setup:    bic.b   #PO_MUTE   ;mute
+          bis.b   #FLB_KEEPMUTE,&bflag
+
+setup1:   bit.b   #PI_TUNEUP
+          jnc     imode
+          bit.b   #PI_TUNEDN
+          jnc     uspd
+          bit.b   #PI_SPLIT
+          jnc     padrev
+          bit.b   #PI_MENU
+          jnc     dis_cont
+          jmp     setup1
+          
+str_su:   call    #wrsup
+          bic.b   #FLB_KEEPMUTE,&bflag
+          mov.b   #LED_BLANK
+          mov     #0200h,r14
+          call    #mrsout
+          br      #wait1
+
+padrev:   bit     #FLB_REVPAD,&bflag
+          jc      proff
+          bis     #FLB_REVPAD,&bflag
+          mov     #0a00h,r14    ;r reverse
+          call    #mrsout
+          jmp     setup
+
+proff:    bic     #FLB_REVPAD,&bflag
+          mov     #0600h,r14     ;N normal
+          call    #mrsout
+          jmp     setup
+          
+imode:    bit     #FLB_I_A_B,&bflag
+          jc      a_mode          
+          bis     #FLB_I_A_B,&bflag
+          mov     #01800h,r14   ;B
+          call    #mrsout
+          jmp     setup
+          
+a_mode:   bic     #FLB_I_A_B,&bflag
+          mov     #0500h,r14    ;A 
+          call    #mrsout
+          jmp     setup          
+
+uspd:     mov     #0800h,r14    ;S
+          mov     &speedk,&userk
+          call    #mrsout
+          jmp     setup
+          
+dig_int:  bic     #FL_STRKEY,&flags
+          bis     #FLU_DIGION,&FLU
+          br      #wait1
+          
+dig_ext:  bic     #FLU_DIGION,&FLU
+          mov.b   #LED_BLANK
+          br      #wait1          
+          
+alt_pad:  bit.b   #PI_SPLIT
+          jnc     alt_pads
+          bit.b   #PI_TUNEUP
+          jnc     alt_stky
+          bit.b   #PI_MENU
+          jc      alt_pad 
+          jmp     str_su
+          
+alt_stky: mov     #0800h,r14    ;S
+          call    #mrsout
+          mov     #0d00h,r14    ;K
+          call    #mrsout
+          bis     #FLB_ALTPAD+FLB_ALTSTKY,&bflag
+          jmp     alt_pad          
+
+alt_pads: bit     #FLB_ALTPAD,&bflag
+          jc      alt_norm
+          bis     #FLB_ALTPAD,&bflag
+          mov     #0500h,r14    ;A
+          call    #mrsout
+          jmp     alt_pad
+          
+alt_norm: bic     #FLB_ALTPAD+FLB_ALTSTKY,&bflag
+          mov     #0600h,r14    ;N
+          call    #mrsout
+          jmp     alt_pad         
+                      
+;**************************************************************
+;select frequency readout mode, LED+morse, LED only, Morse only
+;************************************************************** 
+dis_cont: mov.b   #LED_F
+          mov     #01200h,r14
+          call    #mrsout 
+
+dis_lp    bit.b   #PI_TUNEDN
+          jnc     ds_off
+          bit.b   #PI_TUNEUP
+          jnc     mrs_off
+          bit.b   #PI_SPLIT
+          jnc     rstore
+          bit.b   #PI_MENU
+          jnc     str_su
+          jmp     dis_lp
+ 
+ds_off:  bic      #FLB_NOMRS,&bflag
+         bis      #FLB_NOLED,&bflag
+         mov      #0700h,r14      ;send M morse only
+         call     #mrsout
+         mov      #0f00h,r14
+         call     #mrsout
+         jmp      dis_lp
+         
+mrs_off:  bic     #FLB_NOLED,&bflag
+          bis     #FLB_NOMRS,&bflag
+          mov     #0c00h,r14    ;send D led only
+          call    #mrsout
+          mov     #0f00h,r14
+          call    #mrsout
+          jmp     dis_lp                     
+                      
+rstore:   bic     #FLB_NOLED+FLB_NOMRS,&bflag
+          mov     #01800h,r14   ; send B both led and morse
+          call    #mrsout
+          jmp     dis_lp           
+                               
+cdsp:     br      #speed         
+afa:      br      #mfrqout
+
+;*******************
+;* int tune mode
+;*********************
+
+etune:    bit     #FL_STRKEY,&flags     ; test for straight key mode
+          jc      mdexit
+
+          mov     #0300h,r14  ;Tune
+          call    #mrsout           
+          jmp     tune
+           
+;********************************
+;int direct frequency entry mode
+;********************************           
+           
+enfreq:   bit     #FL_STRKEY,&flags     ;test for straight key mode
+          jc      mdexit  
+          bit     #0008h,&bflag     ;test for split mode on
+          jc      mdexit
+          mov     #0c00h,r14        ;Enter freq annunciate "D"
+          call    #mrsout         
+          bis     #FLB_KEEPMUTE,&bflag 
+enw_LP:   bit.b   #PI_MENU
+          jnc     enw_LP 
+          bis     #FL_DFE,&flags
+          clr     r8
+          bic.b   #PO_MUTE
+          br      #few1       
+        
+kmemint:  bit     #FL_STRKEY,&flags    ;test for straight key mode
+          jc      mdexit            
+          bic.b   #PO_MUTE
+          bis     #FLB_KEEPMUTE,&bflag
+          mov     #rammem,r8
+          bis     #0300h,&flags
+          br      #kmlp2        
+
+;*********************************
+;measure battery voltage
+;*********************************
+
+
+batV:     bis     #FLB_KEEPMUTE,&bflag         ;set stay muted morse out flag
+          bic.b   #PO_MUTE              ;mute receiver 
+          bis     #FL_BLANK,&flags
+          bis     #0030h,&ADC10CTL0
+          bic     #04000h,&ADC10CTL1
+          bis     #03000h,&ADC10CTL1
+          mov     #01800h,r14
+          call    #mrsout
+          clr     r6
+bvwt:     cmp     #0100h,r6
+          jne     bvwt
+          bis     #0003h,&ADC10CTL0
+adwait2:  bit     #FLB_ADCINT,&bflag
+          jnc     adwait2
+          bic     #FLB_ADCINT,&bflag
+          mov     &ADC10MEM,r10
+          rla     r10
+          clr     r9
+h_tst:    cmp     #0064h,r10
+          jge     hnds
+t_tst:    cmp     #000ah,r10
+          jge     tens
+   
+          call    #mconv
+          call    #mconv
+          bit     #FLB_NOLED,&bflag
+          jc      tj1
+          bic.b   #080h,&P3OUT
+tj1:      bit     #FLB_NOMRS,&bflag
+          jc      tj2            
+          mov     #0a00h,r14  ; send "R"
+          call    #mrsout
+tj4:      call    #mconv
+          bit     #0008h,&bflag         ;test for split modes
+          jnc     tj6
+          bic.b   #08h,&P3OUT           ;turn DP back on if in split mode
+tj6:      bit     #FLU_DIGION,&FLU
+          jnc     tj7
+          mov.b   #LED_d
+tj7:      bic     #FLB_KEEPMUTE,&bflag         ;clear stay muted morse out flag
+          bic     #FL_BLANK,&flags
+          bis.b   #PO_MUTE              ;unmute receiver  
+          br      #wait1
+          
+          
+tj2:      clr     r6
+tj3:      cmp     #01ffh,r6
+          jne     tj3
+          jmp     tj4
+          
+          
+hnds:     dadd    #0100h,r9   ;convert bin to bcd
+          sub     #0064h,r10
+          jmp     h_tst
+          
+tens:     dadd    #0010h,r9
+          sub     #000ah,r10
+          jmp     t_tst         
+          
+          
+;************************************
+; Calculate LO frequency
+; LO = Tx +/- offset
+;**************************************        
+        
+        
+offset:   bit     #0020h,&bflag
+          jc      txdds
+          mov     &ofst_l,r12   ;load IF offset
+          mov     &ofst_h,r13
+          mov     &fbin_l,r15   ;load tx phase word
+          mov     &fbin_h,r14
+          bit     #FLB_OFFSETSUB,&bflag ;test for + or - offset
+          jc      offj_1
+          sub     r12,r15       ;LO = VFO-IF
+          subc    r13,r14 
+          jmp     offj_2
+        
+offj_1:   add     r12,r15       ;LO=VFO+IF
+          addc    r13,r14
+offj_2:   mov     #04000h,r13
+          mov     r15,&rxbin_l  ;store result
+          mov     r14,&rxbin_h      
+          call    #ddsout       ;output to dds
+          bit     #FLB_RIT, &bflag
+          jnc     txdds
+          ret
+
+txdds:    mov     &fbin_l,r15   ;load tx phase word
+          mov     &fbin_h,r14
+          mov     #08000h, r13    ; FREQ1
+;*********************************
+; load LO freq to DDS
+;**********************************
+               
+ddsout:   rla     r15
+          rlc     r14
+          rla     r15
+          rlc     r14
+          rrc     r15
+          rrc     r15
+        
+          bis     r13,r15
+          call    #out32
+          mov     r14,r15
+          bis     r13,r15
+          call    #out32
+          bis.b   #PO_FSYNC
+          ret
+        
+   
+;************************************
+;32 bit serial output to DDS   
+;***********************************
+   
+out32:    mov     #16,r12
+          bic.b   #PO_FSYNC
+mbits_3:  rlc     r15
+          jc      one_3
+          bic.b   #PO_SDATA
+          nop
+dclok_3:  bic.b   #PO_SCLK
+          nop
+          bis.b   #PO_SCLK
+          dec     r12
+          jne     mbits_3
+          ret
+one_3:    bis.b   #PO_SDATA
+          jmp     dclok_3
+          
+;****************************
+;16 bit serial word output to DDS
+;********************************
+out16:    mov     #16, r13
+          bic.b   #PO_FSYNC
+mbits:    rlc     r15
+          jc      one
+          bic.b   #PO_SDATA
+          nop
+dclok:    bic.b   #PO_SCLK
+          nop
+          bis.b   #PO_SCLK
+          dec     r13
+          jne     mbits
+          bis.b   #PO_FSYNC
+          ret
+
+one:      bis.b   #PO_SDATA
+          jmp     dclok         
+          
+           
+  ; digital modulation, PSK / MFSK modes
+digimod:        bic     #FLU_UART, &FLU
+                mov     &uart_rxdata, r15
+                rla     r15
+                jnc     digimod_uarterr           ; stop bit is wrong, framing error
+                jz      digiend                   ; end of transmition
+                cmp     #02000h, r15
+                jz      digitxoff
+                bit     #FLU_MFSK, &FLU
+                jnc     digimodpsk
+; MFSK modulation, multiply tone and add it to current phase increment
+                mov     r15, r12
+                rla     r12
+                clr     r15                       ; 0 –> LSBs RESULT
+                clr     r14                       ; 0 –> MSBs RESULT
+                mov     #5, r13                   ; loop counter
+digimod_mult2:  rla     r12                       ; Test the high bit
+                jnc     digimod_mult1             ; If 0: do nothing
+                add     &tonesp_l, r15            ; If 1: add tone spacing to result
+                addc    &tonesp_h, r14
+digimod_mult1:  dec     r13                       ; Next bit to test
+                jz      digimod_mult3
+                rla     r15                       ; Multiply accumulator by 2
+                rlc     r14
+                jmp     digimod_mult2
+digimod_mult3:  add     #80h, r15                 ; Add 1/2 LSB (rounding)
+                adc     r14
+                mov     #8, r13                   ; (r13, r12) >>= 8
+digimod_shift:  rra     r14
+                rrc     r15
+                dec     r13
+                jnz     digimod_shift
+                add     &fbin_l, r15              ; (r13, r12) += (fbin_h, fbin_l)
+                addc    &fbin_h, r14
+                mov     #04000h, r13              ; DDS frequency register address, set to FREQ0
+                xor     #FLU_LASTREG, &FLU      ; Toggle the register indicator
+                bit     #FLU_LASTREG, &FLU
+                jnc     digimod_shift1
+                rla     r13                       ; DDS frequency register address, set to FREQ1
+digimod_shift1: call    #ddsout                   ; Set FREQ0/FREQ1 depending on r13
+                mov     #02038h, r15              ; txfreq - B28, FSEL, OPBITEN, SIGN, DIV2 - txfreq, PHASE0, FREQ0
+                bit     #FLU_LASTREG, &FLU
+                jnc     digimod_shift2
+                bis     #00800h, r15              ; select FREQ1
+digimod_shift2: call    #out16                    ; Send it to the DDS chip
+                jmp     digitxon
+
+digimodpsk:     clrc                              ; command 2 - phase 0, command 3 - phase 90, command 4 - phase 180, command 5 - phase 270
+                rrc     r15
+                rrc     r15
+                rrc     r15
+                add     #0f800h, r15
+                bic     #0f000h, r15
+                add     #0c000h, r15              ; program phase register 0 to a value delivered by UART
+                xor     #FLU_LASTREG, &FLU
+                bit     #FLU_LASTREG, &FLU
+                jnc     digimod1
+                bis     #02000h, r15              ; the phase register 1 will be programmed
+digimod1:       call    #out16                    ; program the nonactive phase register now
+              
+                mov     #02838h, r15              ; txfreq - B28, FSEL, OPBITEN, SIGN, DIV2 - txfreq, phase0
+                bit     #FLU_LASTREG, &FLU
+                jnc     digitxon1
+                bis     #0400h, r15               ; select phase register 1, which is preprogrammed to 180 grades
+digitxon1:      call    #out16
+              
+digitxon:       bis.b   #PO_TRANSMIT              ; tx enable
+                bis     #FL_SIDETONE, &flags      ; start sidetone
+                br      #wait1
+digitxoff:      bic.b   #PO_TRANSMIT              ; tx disable
+                bic     #FL_SIDETONE, &flags      ; stop sidetone
+digimod_uarterr:
+                br      #wait1
+
+;************************************
+; End of digital transmition
+;************************************
+digiend:  bic     #FLU_DIGITX, &FLU
+          bic     #FLU_DIGIEND, &FLU
+          bic.b   #PO_TRANSMIT          ; tx disable
+          bic     #FL_SIDETONE, &flags  ; stop sidetone
+          clr     r6
+digiend1: cmp     #0009h, r6            ; 5ms delay
+          jne     digiend1
+          call    #bindiv               ; go calculate new phase word
+          call    #offset               ; go figure LO freq and update DDS
+          mov     #02000h, r15
+          call    #out16                ; rx freq
+         
+digiend2: cmp     #000bh, r6            ; short delay
+          jne     digiend2
+          bis.b   #PO_MUTE              ; unmute
+          br      #wait1
+        
+;***************************************
+;Tune up mode, toggle Tx on and off
+;****************************************        
+        
+        
+tune:     mov.b   #LED_t
+tunsw:    bit.b   #PI_MENU        ;wait for menu button release
+          jnc     tunsw
+         
+          bit     #FLB_ALTPAD,&bflag
+          jc      tn_LPs
+          
+tn_LP:   bit.b    #PI_DIT         ;rest for dot paddle to start
+          jnc     en_tx
+          bit.b   #PI_MENU        ;test for menu button to exit
+          jc      tn_LP
+          jmp     tu_w7
+          
+tn_LPs:   bit.b   #PI_TUNEDN
+          jnc     en_tx
+          bit.b   #PI_MENU
+          jc      tn_LPs          
+          
+          
+          
+tu_w7:    mov.b   #LED_BLANK
+          bit     #0008h,&bflag         ;test for split modes
+          jnc     txu_0
+          bic.b   #08h,&P3OUT           ;turn DP back on if in split mode
+txu_0:    bit     #FLU_DIGION,&FLU
+          jnc     txu_1
+          mov.b   #LED_d
+txu_1:    mov     #01900h,r14           ;load morse "X"
+          call    #mrsout
+tu_w5:    bit.b   #PI_MENU              ;wait for switch release
+          jnc     tu_w5 
+          br      #wait1                ;return to main switch loop
+        
+en_tx:    bis     #FL_SIDETONE,&flags         ;enable sidetone
+          bic.b   #PO_MUTE ;mute
+          mov     #02838h,r15           ;txfreq
+          call    #out16          
+          bis.b   #PO_TRANSMIT          ;tx enable
+          clr     r6
+          
+tu_w2:    bit     #FLB_ALTPAD,&bflag         ;test for TU/TD switch control
+          jnc     tu_wt3
+tu_w4:    bit.b   #PI_TUNEUP
+          jnc     de_tx
+          jmp     tu_w4
+          
+tu_wt3:   bit.b   #PI_DAH               ;test for dash paddle to stop 
+          jnc     de_tx
+          jmp     tu_wt3
+                
+de_tx:    bic.b   #PO_TRANSMIT          ;tx disable
+          bic     #FL_SIDETONE,&flags         ;stop sidetone
+          clr     r6
+tu_w3:    cmp     #000ah,r6             ;5 ms delay 
+          jne     tu_w3
+    
+          mov     #02000h,r15
+          call    #out16               ;rx freq
+tu_w6:    cmp     #000bh,r6
+          jne     tu_w6
+          bis.b   #PO_MUTE ;unmute
+          jmp     tune
+        
+;***********************************
+;Straight key keying
+;************************************        
+        
+ strkey:  bic.b   #PO_MUTE            ;mute
+          mov     #02838h,r15         ;txfreq
+          call    #out16       
+          bis     #FL_SIDETONE,&flags ;enable sidetone   
+          bis.b   #PO_TRANSMIT        ;tx enable
+          clr     r6
+sk_dy:    cmp     #001fh,r6           ;debounce delay
+          jne     sk_dy               ;loop
+          
+skt_t1:   bit     #FLB_ALTSTKY,&bflag
+          jnc     sk_lp
+          
+skt_t2:   bit.b   #PI_TUNEUP
+          jnc     skt_t2
+          jmp       sk_lp2
+          
+sk_lp:    bit.b   #PI_DIT             ;test for key
+          jnc     sk_lp 
+          
+sk_lp2:   bic.b   #PO_TRANSMIT        ;tx disable
+          bic     #FL_SIDETONE,&flags       ;stop sidetone
+          clr     r6
+sk_lp3:   cmp     #000ah,r6           ;5ms  delay
+          jne     sk_lp3
+    
+          mov     #02000h,r15
+          call    #out16              ;rx freq 
+                 
+;sk_lp4:   cmp    #000bh,r6           ;short delay
+;          jne    sk_lp4
+       
+          bis.b   #PO_MUTE            ;unmute
+          br      #wait1
+                
+                
+;*********************************
+;paddle keying
+;***********************************                
+                
+                
+padin:    mov     #0001h,r7
+padinb:   bis     #FL_SIDETONE,&flags
+          bic.b   #PO_MUTE            ;mute
+          bit     #FL_DFE,&flags       ;test for no transmit
+          jc      padntx
+          mov     #02838h,r15         ;load tx freq
+          call    #out16          
+          bis.b   #PO_TRANSMIT        ;tx enable
+padntx:   
+          mov     &speedk,&moutk
+          mov     &userk,r4
+          clr     r5
+          bit     #FLB_ALTPAD,&bflag
+          jc      apadl
+          bit     #FLB_REVPAD,&bflag       ;check for reverse paddle
+          jc      reverseP
+          bit     #FL_PADDLE1,&flags
+          jc      dash
+          bit     #FL_PADDLE2,&flags
+          jc      dot
+          jmp     space
+
+reverseP: bit     #FL_PADDLE1,&flags
+          jc      rdot
+          bit     #FL_PADDLE2,&flags
+          jc      rdash
+          jmp     space
+ 
+apadl:    bit     #FL_PADDLE1,&flags
+          jc      adash
+          bit     #FL_PADDLE2,&flags
+          jc      adot
+          jmp     space
+          
+          
+adot:     clrc
+          rlc     r7
+          bic     #FL_PADDLE2,&flags
+adota:    cmp     #1,r5
+          jne     dota
+adot2:    bit.b   #PI_TUNEUP
+          jc      adot1
+          bis     #FL_PADDLE1,&flags
+adot1:    cmp     #3,r5
+          jne     adot2  
+          bit     #FLB_EXTRAEL,&bflag
+          jnc     space
+          bis     #FL_PADDLE1,&flags
+          jmp     space
+
+
+adash:    setc
+          rlc     r7
+          bic     #FL_PADDLE1,&flags
+adasha:   cmp     #2,r5
+          jne     adasha
+adash2:   bit.b   #PI_TUNEDN
+          jc      adash1
+          bis     #FL_PADDLE2,&flags
+adash1:   cmp     #9,r5
+          jne     adash2
+          bit     #FLB_EXTRAEL,&bflag
+          jnc     space
+          bis     #FL_PADDLE2,&flags
+          jmp     space
+
+
+rdot:     clrc
+          rlc     r7
+          bic     #FL_PADDLE1,&flags
+rdota:    cmp     #1,r5
+          jne     rdota
+rdot2:    bit.b   #PI_DIT
+          jc      rdot1
+          bis     #FL_PADDLE2,&flags
+rdot1:    cmp     #3,r5
+          jne     rdot2  
+          bit     #FLB_EXTRAEL,&bflag
+          jnc     space
+          bis     #FL_PADDLE2,&flags                 
+          jmp     space
+
+
+rdash:    setc
+          rlc     r7
+          bic     #FL_PADDLE2,&flags
+rdasha:   cmp     #2,r5
+          jne     rdasha
+rdash2:   bit.b   #PI_DAH
+          jc      rdash1
+          bis     #FL_PADDLE1,&flags
+rdash1:    cmp     #9,r5
+          jne     rdash2
+          bit     #FLB_EXTRAEL,&bflag
+          jnc     space
+          bis     #FL_PADDLE1,&flags
+          jmp     space
+
+dot:      clrc
+          rlc     r7
+dotb:     bic     #FL_PADDLE2,&flags
+dota:     cmp     #1,r5
+          jne     dota
+dot2:     bit.b   #PI_DAH
+          jc      dot1
+dot1s:    bis     #FL_PADDLE1,&flags
+dot1:     cmp     #3,r5
+          jne     dot2  
+          bit     #FLB_EXTRAEL,&bflag
+          jnc     space
+          bis     #FL_PADDLE1,&flags                 
+          jmp     space
+
+
+dash:     setc
+          rlc     r7
+          bic     #FL_PADDLE1,&flags
+dasha:    cmp     #2,r5
+          jne     dasha
+dash2:    bit.b   #PI_DIT
+          jc      dash1
+          bis     #FL_PADDLE2,&flags
+dash1:    cmp     #9,r5
+          jne     dash2
+          bit     #FLB_EXTRAEL,&bflag
+          jnc     space
+          bis     #FL_PADDLE2,&flags
+                      
+
+space:    clr     r5
+          clr     r6 
+          bic.b   #PO_TRANSMIT        ;tx disable
+          bit     #FLB_I_A_B,&bflag
+          jnc     sp_lp2
+          bic     #FLB_EXTRAEL,&bflag
+          mov.b   &P2IN,r11
+          bic     #0fffch,r11         ; dit and dah down
+
+          cmp     #0000h,r11
+          jne     sp_lp2
+          bis     #FLB_EXTRAEL,&bflag
+          
+sp_lp2:   cmp     #0009h,r6
+          jne     sp_lp2       
+          bic     #FL_SIDETONE,&flags
+          mov     #02000h,r15
+          call    #out16        
+       
+splp:     cmp     #3,r5
+          jne     splp
+          bit     #FL_PADDLE1,&flags
+          jc      padinb
+          bit     #FL_PADDLE2,&flags
+          jc      padinb
+
+          bit     #FL_DFE,&flags
+          jc      ltrsp
+          bis.b   #PO_MUTE            ;unmute
+          br      #wait3  
+
+;***********************************
+;test for letter space
+;************************************
+
+ltrsp:    bit     #FLB_ALTPAD,&bflag
+          jc     ltrsp2
+          clr     r5
+ltrsp1:   bit.b   #PI_DIT
+          jnc     dit_ptb
+          bit.b   #PI_DAH
+          jnc     dah_ptb
+          cmp     #7,r5
+          jne     ltrsp1
+          bit     #FL_KMon,&flags
+          jc      kmem  
+          br      #decode
+          
+ltrsp2:   clr     r5
+ltrsp3:   bit.b   #PI_TUNEDN
+          jnc     dit_ptb
+          bit.b   #PI_TUNEUP
+          jnc     dah_ptb
+          cmp     #7,r5
+          jne     ltrsp3
+          bit     #FL_KMon,&flags
+          jc      kmem  
+          br      #decode
+
+;*********************************
+;keyer memory temp store
+;*********************************
+
+dah_ptb:  bis     #FL_PADDLE1,&flags
+          jmp     padinb
+dit_ptb:  bis     #FL_PADDLE2,&flags
+          jmp     padinb
+          
+dah_pta:  bis     #FL_PADDLE1,&flags
+          jmp     padin
+dit_pta:  bis     #FL_PADDLE2,&flags
+          jmp     padin                        
+
+
+kmem:     bic.b   #040h,&P3OUT ; flash "f" seg at letter store
+          clr     r6
+kwtlp1:   cmp     #0010h,r6
+          jne     kwtlp1
+          bis.b   #040h,&P3OUT
+          mov.b   r7,0(r8)
+          inc     r8
+          cmp     #ramend,r8
+          jeq     strkmem_out
+          bit     #FLB_ALTPAD,&bflag
+          jnc     kmlp1a
+kmlp1b:   bit.b   #PI_TUNEDN
+          jnc     dit_pta
+          bit.b   #PI_TUNEUP
+          jnc     dah_pta
+          cmp     #21,r5
+          jne     kmlp1b
+          jmp     kmlp1c
+
+          
+kmlp1a:   clr     r5
+kmlp1:    bit.b   #PI_DAH
+          jnc     dah_pta
+          bit.b   #PI_DIT
+          jnc     dit_pta
+          cmp     #21,r5
+          jne     kmlp1
+kmlp1c:   bic.b   #01h,&P3OUT  ; Flash "b" seg at word space store
+          clr     r6
+kwtlp2:   cmp     #0010h,r6
+          jne     kwtlp2
+          bis.b   #01h,&P3OUT
+          
+          clr     r7
+          mov.b   r7,0(r8)
+          inc     r8
+          cmp     #ramend,r8
+          jeq     strkmem_out
+          
+kmlp2:    bit     #FLB_ALTPAD,&bflag
+          jc      kmlp2s
+          bit.b   #PI_DIT
+          jnc     dit_pta
+          bit.b   #PI_DAH
+          jnc     dah_pta
+          bit.b   #PI_MENU
+          jnc     strkmem
+          bit.b   #PI_SPLIT
+          jnc     km_l2
+          jmp     kmlp2
+          
+kmlp2s:   bit.b   #PI_TUNEDN
+          jnc     dit_pta
+          bit.b   #PI_TUNEUP
+          jnc     dah_pta
+          bit.b   #PI_MENU
+          jnc     strkmem
+          bit.b   #PI_SPLIT
+          jnc     km_l2
+          jmp     kmlp2s       
+
+;*************************************
+; store keyer message 
+;**************************************
+ strkmem_out:
+          mov     #0ffffh,0(r8)   ; put ff in last two bytes
+          jmp     strkmem_j2
+
+strkmem:  cmp     #rammem,r8
+          jeq     mwrdone
+
+          mov.b   #0ffh,0(r8)     ; put ff in last byte
+; put one or two more in if necessary
+          bit.b   #001h,r8        ; odd memory?
+          jnc     strkmem_j1
+          inc     r8
+          mov     #0ffffh,0(r8)   ; yes, put ff in next two bytes
+          jmp     strkmem_j2
+
+strkmem_j1:                       ; no it is even, put ff in next one byte
+          inc     r8
+          mov.b   #0ffh,0(r8)
+
+strkmem_j2:
+          mov     #rammem,r8
+          jmp     kmelp1
+       
+;**************************************
+; send message via transmitter
+;****************************************
+
+        
+kmemout:  bis     #FL_TxKm,&flags   ; memory flag
+          mov     #flash_rammem,r8
+          
+;
+; this is where the logic for multiple memory goes
+;
+          clr     r6
+mem_choice:
+          bit.b   #PI_TUNEDN
+          jc      mem_choice_tuneup
+          jmp     kmelp1
+          
+mem_choice_menu:
+          bit.b   #PI_TUNEUP
+          jc      mem_choice_loop 
+          
+mem_choice_1:
+          inc     r8
+          cmp.b   #0ffh,-1(r8)     ; skip to byte after next ff
+          jne     mem_choice_1
+          jmp     kmelp1
+
+mem_choice_tuneup:          
+          bit.b   #PI_MENU
+          jc      mem_choice_menu
+          
+mem_choice_2:
+          inc     r8
+          cmp.b   #0ffh,-1(r8)       ; skip to byte after next ff
+          jne     mem_choice_2
+          
+mem_choice_3:
+          inc     r8
+          cmp.b   #0ffh,-1(r8)       ; skip to byte after next ff
+          jne     mem_choice_3
+          jmp     kmelp1
+
+mem_choice_loop:
+          cmp     #025ah,r6           ; 1/2 second delay
+          jne     mem_choice
+          bit     #FLB_ALTPAD,&bflag
+          jnc     eostrg
+          bit     #FLB_ENALTPAD,&bflag
+          jc      skoff
+          bis     #FLB_ENALTPAD,&bflag
+          mov.b   #LED_t
+          jmp     sko2
+          
+skoff:    bic     #FLB_ENALTPAD,&bflag
+          mov.b   #LED_BLANK
+sko2:     bit     #0008h,&bflag         ;test for split modes
+          jnc     sko1
+          bic.b   #08h,&P3OUT           ;turn DP back on if in split mode   
+sko1:     br      #wait1
+
+
+kmelp1:   mov.b   @r8+,r14
+          cmp.b   #000h,r14       ; is a word space?
+          jeq     kwds
+          cmp.b   #0ffh,r14       ; is at end?
+          jne     kmelp2
+          bit     #FL_TxKm,&flags   ; sending memory?
+          jc      eostrg
+          cmp.b   #0ffh,0(r8)
+          jeq     eostrg          ; only exit if 2 ff in a row
+
+kmelp2:   swpb    r14
+
+          call    #mrst           ; transmit character!
+          bit.b   #PI_DIT         ; P2.1 Dit
+          jnc     exbcnm
+          bit.b   #PI_TUNEDN
+          jnc     exbcnm
+          bit.b   #PI_MENU
+          jnc     intbmod
+          bit     #FL_STRKEY,&flags   ; straight key flag
+          jc      kmelp1
+          bit.b   #PI_DAH         ; P2.0 Dah
+          jnc     kpause
+          bit.b   #PI_TUNEUP
+          jnc     kpause
+          jmp     kmelp1      
+ 
+;***************************************************
+;message word space delay
+;************************************************** 
+ 
+kwds:     clr     r5
+kwdslp:   cmp     #0015h,r5
+          jne     kwdslp
+          jmp     kmelp1
+        
+;****************************************************
+;message paused 
+;***************************************************        
+        
+kpause:   bit.b   #PI_DIT    
+          jnc     intbmod
+          bit.b   #PI_TUNEDN
+          jnc     intbmod
+         
+          bit.b   #PI_DAH
+          jnc     kpause
+          bit.b   #PI_TUNEUP
+          jnc     kpause
+          jmp     kmelp1
+        
+              
+eostrg:   bit     #FL_BEACON2,&flags
+          jc      beacm
+          bit     #0300h,&flags
+          jc      kmemfs
+          bic     #FL_TxKm,&flags  
+          br      #wait1
+
+                 
+intbmod:  bis     #FL_BEACON2,&flags
+          clr     r6
+          bis     #FL_SIDETONE,&flags
+          mov.b   #LED_b
+ibmd_j2:  cmp     #00ffh,r6
+          jne     ibmd_j2
+          bic     #FL_SIDETONE,&flags
+ibmd_j:   bit.b   #PI_DIT
+          jnc     ibmd_j
+          bit.b   #PI_TUNEDN
+          jnc     ibmd_j
+          jmp     kmelp1
+
+beacm:    clr     r6
+bealp1:   bit.b   #PI_DIT
+          jnc     exbcnm
+          bit.b   #PI_DAH
+          jnc     exbcnm
+          bit.b   #PI_TUNEDN
+          jnc     exbcnm
+          bit.b   #PI_TUNEUP
+          jnc     exbcnm
+          cmp     #0e24h,r6
+          jne     bealp1
+          mov     #flash_rammem,r8
+          jmp     kmelp1
+        
+exbcnm:   bic     #0c00h,&flags
+          mov.b   #LED_BLANK
+          bit     #FLB_RITXIT,&bflag
+          jnc     exswt
+          bic.b   #DP,&P3OUT
+          clr     r6
+debnce:   cmp     #001fh,r6
+          jne     debnce
+          
+          
+exswt:    bit.b   #PI_DIT
+          jnc     exswt
+          bit.b   #PI_DAH
+          jnc     exswt
+          bit.b   #PI_TUNEUP
+          jnc     exswt
+          bit.b   #PI_TUNEDN
+          jnc     exswt
+          clr     r6
+debnce2:  cmp     #001fh,r6
+          jne    debnce2
+          br      #wait1                
+        
+kmemfs:   bit.b   #PI_MENU
+          jnc     km_l1
+          bit.b   #PI_SPLIT
+          jnc     km_l2
+          jmp     kmemfs
+        
+km_l1:    
+          mov     #rammem,r8
+          call    #cl_flsh
+          mov     #flash_rammem,r13
+km_l3:    mov     @r8+,r14
+          call    #wr_flsh
+          cmp     #0ffffh,r14
+          jeq     mwrdone
+          incd    r13
+          jmp     km_l3
+
+km_l2:    mov     #0200h,r14
+          call    #mrsout
+          mov     #0700h,r14
+          call    #mrsout
+          br      #kmemint
+
+mwrdone:  bic     #0300h,&flags
+ ;         bic     #FLB_ENALTPAD,&bflag
+          mov.b   #LED_BLANK
+          mov     #0200h,r14
+          call    #mrsout
+          bic     #FLB_KEEPMUTE,&bflag
+          bis.b   #PO_MUTE
+          br      #wait1
+          
+;********************************************
+;output   morse character        
+;**********************************************
+
+mrst:     mov     &speedk,&moutk
+          jmp     mrs_lp4
+
+mrsout:   mov     &userk,&moutk
+                    
+mrs_lp4:  mov     &moutk,r4
+          mov     #9,r12
+          bic.b   #PO_MUTE  ;mute        
+mrs_lp1:  dec     r12
+          jz      mrs_ext
+          rlc     r14
+          jnc     mrs_lp1
+        
+mrs_lp3:  dec     r12
+          jz      mrs_ext
+          bit     #FL_TxKm,&flags
+          jnc     mrs_lp2
+          mov     #02838h,r15
+          call    #out16          
+          bis.b   #PO_TRANSMIT   ;tx enable
+        
+mrs_lp2:  clr     r5
+          bis     #FL_SIDETONE,&flags
+          rlc     r14
+          jc      mdash
+
+mdot:     cmp     #0003h,r5
+          jne     mdot
+          jmp     mspace
+
+mdash:    cmp     #0009h,r5
+          jne     mdash
+        
+mspace:   bit     #FL_TxKm,&flags
+          jnc     msp1
+          bic.b   #PO_TRANSMIT   ;tx disable
+          clr     r6
+tw_lp:    cmp     #0009h,r6
+          jne     tw_lp       
+          mov     #02000h,r15
+          call    #out16
+        
+msp1:     bic     #FL_SIDETONE,&flags
+          clr     r5
+ms_lp:    cmp     #0003h,r5
+          jne     ms_lp        
+          jmp     mrs_lp3
+          
+mrs_ext:  bit     #FL_BLANK,&flags
+          jnc      mrs_ex1
+          mov.b   #LED_BLANK
+mrs_ex1:  cmp     #0009h,r5
+          jne     mrs_ex1
+          bit     #FLB_KEEPMUTE,&bflag
+          jc      mrs_lp7
+          bis.b   #PO_MUTE  ;unmute
+mrs_lp7:  ret
+
+
+;********************************************
+;change code speed
+;********************************************
+
+speed:    bic.b   #PO_MUTE
+          bis     #FLB_KEEPMUTE,&bflag
+spd1:     mov     &spcnt,r7
+          clr     r6
+                
+spd_lp1:  bit     #FL_STRKEY,&flags
+          jc      spd_lp2
+          bit     #FLB_ALTPAD,&bflag
+          jc      spd_lp2
+          bit.b   #PI_DAH
+          jnc     spdup
+          bit.b   #PI_DIT
+          jnc     spddn
+          
+spd_lp5:  bit.b   #PI_TUNEUP
+          jc      spd_lp3  
+          cmp     #0006h,r7
+          jl      sp_end
+          sub     #0005h,r7
+          bis     #FLB_TEMP,&bflag
+          jmp     spd_lut
+          
+spd_lp3:  bit.b   #PI_TUNEDN
+          jc      spd_lp4  
+          cmp     #0012h,r7
+          jge     sp_end        
+          add     #0005h,r7
+          bis     #FLB_TEMP,&bflag
+          jmp     spd_lut
+                   
+spd_lp2:  bit.b   #PI_TUNEUP
+          jnc     spdup
+          bit.b   #PI_TUNEDN
+          jnc     spddn
+         
+         
+spd_lp4:  bit.b   #PI_MENU
+          jnc     sdp_lp11
+          cmp     #04b4h,r6
+          jne     spd_lp1
+          jmp     sdp_lp10
+         
+sdp_lp11: mov     #0200h,r14
+          call    #mrsout
+          call    #wrsup 
+          jmp     sdp_lp12
+          
+sdp_lp10: mov     #0200h,r14
+          call    #mrsout
+         
+sdp_lp12: bis.b   #PO_MUTE
+          bic     #FLB_KEEPMUTE+FLB_TEMP,&bflag
+          mov.b   #LED_BLANK
+          bit     #FLB_RITXIT,&bflag         ;test for split modes
+          jnc     sdp_lp7
+          bic.b   #DP,&P3OUT           ;turn DP back on if in split mode
+sdp_lp7:  bit     #FLB_ENALTPAD,&bflag
+          jnc     spl_lp8
+          mov.b   #LED_t
+
+spl_lp8:  br      #wait1
+        
+spdup:    dec     r7
+          jnz     spd_lut
+          inc     r7
+          jmp     sp_end
+        
+spddn:    inc     r7
+          cmp     #0017h,r7
+          jne     spd_lut
+          dec     r7
+sp_end:   mov     #0300h,r14
+          call    #mrst
+          jmp     spd1
+          
+;************************************************
+;retrive code speed timer contant
+;************************************************
+
+          
+spd_lut:  mov     r7,&spcnt
+          mov     #sp_lut,r8
+          add     r7,r8
+          mov.b   @r8,&speedk        
+spd_j1:   mov     #0200h,r14
+          call    #mrst
+          bit     #FLB_TEMP,&bflag
+          jc      sdp_lp10
+          jmp     spd1               
+ 
+;*********************************************
+;code speed timer constants LUT
+;********************************************* 
+ 
+                
+sp_lut    DW      0d0ch
+          DW      0f0eh
+          DW      01110h
+          DW      01312h
+          DW      01514h
+          DW      01716h
+          DW      01918h
+          DW      01c1bh
+          DW      0201eh
+          DW      02522h
+          DW      02b28h
+          DW      03530h
+
+;*************************************************
+; output BCD frequnecy in morse
+;************************************************
+
+mfrqout:  bis     #FLB_KEEPMUTE,&bflag
+          bis     #FL_BLANK,&flags
+          clr     r5
+         
+mxxx:     cmp     #0015h,r5 ;word space delay before sending characters
+          jne     mxxx
+          mov     &fbcd,r9
+          bit     #0010h,&bflag
+          jnc     mx00
+          bic     #0f000h,r9
+          bis     #0a000h,r9
+          jmp     mx01
+mx00:     bit     #0020h,&bflag
+          jnc     mx01
+          bic     #0f000h,r9
+          bis     #0b000h,r9
+mx01:     call    #mconv                ;convert BCD digit to morse character and output
+          call    #mconv
+          call    #mconv
+          bit     #FLB_NOLED,&bflag
+          jc      mx02
+          bic.b   #080h,&P3OUT
+ mx02:    bit     #FLB_NOMRS,&bflag
+          jc      mx04
+          mov     #0a00h,r14            ; send "R"
+          call    #mrsout
+         
+mx03:     call    #mconv
+          bit     #0008h,&bflag         ;test for split modes
+          jnc     mx06
+          bic.b   #08h,&P3OUT           ;turn DP back on if in split mode
+mx06:     bit     #FLU_DIGION,&FLU
+          jnc     mx07
+          mov.b   #LED_d
+mx07:     bic     #FLB_KEEPMUTE,&bflag  ;clear stay muted morse out flag
+          bic     #FL_BLANK,&flags
+          bis.b   #PO_MUTE              ;unmute receiver          
+          br      #wait1                ;exit
+
+mx04:     clr     r6
+mx05:     cmp     #01ffh,r6
+          jne     mx05
+          jmp     mx03
+       
+;**********************************************
+;convert decmial number to morse encoded word  
+;***********************************************
+      
+mconv:    clr     r7
+          clrc
+          rlc     r9   ;shift upper 4 bits of r9 into lower 4 bits of r7
+          rlc     r7   ;at the same time, positions next BCD nibble in upper
+          rlc     r9   ;4 bits of r9
+          rlc     r7
+          rlc     r9
+          rlc     r7
+          rlc     r9
+          rlc     r7
+          mov     #mlut,r8      ;initalize table pointer
+          add     r7,r8         ;add in offset
+          mov.b   @r8,r14       ;get value in table
+          swpb    r14
+          bit     #FLB_NOLED,&bflag
+          jc      mc_jp
+          call    #sevenseg
+mc_jp:    bit     #FLB_NOMRS,&bflag
+          jc      ds_dly
+          call    #mrsout       ;send normal speed 
+          mov.b   #LED_BLANK
+          ret        
+
+ds_dly:   clr     r6
+ds_dly1:  cmp     #01f0h,r6
+          jne     ds_dly1
+          mov.b   #LED_BLANK
+          ret
+
+
+;**********************************
+;decmial number to morse encode LUT
+;***********************************
+
+mlut:     DW      02f03h
+          DW      02327h
+          DW      02021h
+          DW      03830h
+          DW      03e3ch
+          DW      0190ah
+                   
+sevenseg: mov     #segtable,r8
+          add     r7,r8
+          mov.b   @r8,&P3OUT
+          ret
+          
+segtable: DW      0fa88h
+          DW      0584ch
+          DW      0193ah
+          DW      0f80bh
+          DW      03808h                    
+          DW      0ffffh
+                   
+;********************************************************************
+;4 bit nibble shift for packing BCD digit into 16 bit word
+;*******************************************************************
+
+rot4l:    rla     r7
+          rla     r7
+          rla     r7
+          rla     r7
+          ret
+          
+;****************************************
+;Direct frequency entry rouitnes
+;******************************************
+        
+fewait:   mov     #0200h,r14 ; output morse "E"
+          call    #mrsout 
+               
+        
+;******************************************
+;padlde and switch wait and input routine
+;*****************************************
+        
+few1:     bit     #FLB_ALTPAD,&bflag
+          jc      few2
+          bit.b   #PI_DAH
+          jnc     padh
+          bit.b   #PI_DIT
+          jnc     padt  
+          bit.b   #PI_MENU
+          jnc     fe_ex
+          jmp     few1        
+ 
+few2:     bit.b   #PI_TUNEUP
+          jnc     padh
+          bit.b   #PI_TUNEDN
+          jnc     padt  
+          bit.b   #PI_MENU
+          jnc     fe_ex
+          jmp     few2 
+ 
+ 
+padh:     bis     #FL_PADDLE1,&flags
+          br      #padin 
+padt:     bis     #FL_PADDLE2,&flags
+          br      #padin
+;********************************************
+;convert morse encoded character to decmial digit
+;*********************************************
+        
+decode:   cmp     #002fh,r7 ; #1
+          jne     dcd1
+          mov     #1,r7
+          mov.b   #LED_1
+          jmp     dcdx
+        
+dcd1:     cmp     #0003h,r7  ;#0 (cut zero)     
+          jne     dcd2
+          clr     r7
+          mov.b   #LED_0
+          jmp     dcdx
+        
+dcd2:     cmp     #0027h,r7 ;#2
+          jne     dcd3
+          mov     #2,r7
+          mov.b   #LED_2
+          jmp     dcdx
+        
+dcd3:     cmp     #0023h,r7 ;#3
+          jne     dcd4
+          mov     #3,r7
+          mov.b   #LED_3
+          jmp     dcdx
+        
+dcd4:     cmp     #0021h,r7 ;#4
+          jne     dcd5
+          mov     #4,r7
+          mov.b   #LED_4
+          jmp     dcdx
+        
+dcd5:     cmp     #0020h,r7 ;#5
+          jne     dcd6
+          mov     #5,r7
+          mov.b   #LED_5
+          jmp     dcdx
+        
+dcd6:     cmp     #0030h,r7 ;#6
+          jne     dcd7
+          mov     #6,r7
+          mov.b   #LED_6
+          jmp     dcdx
+        
+dcd7:     cmp     #0038h,r7 ;#7
+          jne     dcd8
+          mov     #7,r7
+          mov.b   #LED_7
+          jmp     dcdx
+        
+dcd8:     cmp     #003ch,r7 ;#8
+          jne     dcd9
+          mov     #8,r7
+          mov.b   #LED_8
+          jmp     dcdx
+        
+dcd9:     cmp     #003eh,r7 ;#9
+          jne     dcd0
+          mov     #9,r7
+          mov.b   #LED_9
+          jmp     dcdx
+        
+dcd0:     cmp     #003fh,r7 ;#0
+          jne     nngod
+          mov.b   #LED_0
+          clr     r7
+ 
+;****************************
+;pack BCD digits
+;****************************** 
+        
+dcdx:     inc     r8          ;pack 100 Khz digit into r10
+          cmp     #1,r8
+          jne     tst2
+          swpb    r7          ;swap 8 bit mibble 
+          call    #rot4l        ;shifts a four bit nibble
+          mov     r7,r10        ; move result into r10
+          jmp     fewait
+        
+tst2:     cmp     #2,r8         ;pack 10 KHz digit
+          jne     tst3
+          swpb    r7
+          add     r7,r10        ;pack 10 KHz digit into upper 8 bit nibble of r7
+          jmp     fewait
+        
+tst3:     cmp     #3,r8         ;pack 1 Khz digit
+          jne     tst4
+          call    #rot4l 
+          add     r7,r10
+          jmp     fewait
+        
+tst4:     add     r7,r10        ;pack 100 Hz digit
+          mov     #0200h,r14    ; output morse "E"
+          call    #mrsout  
+          jmp     range_tst                                                                                                                
+        
+nngod:    mov     #04c00h,r14   ; not a vaild number, send "?"
+          call    #mrsout
+          jmp     few1
+
+;******************************************
+;calculate new frequency
+;******************************************
+
+range_tst: bit    #FLB_OFFSETSUB,&bflag
+           jc     rt2
+           cmp    &bhlimit,r10
+           jl       rt2
+           jmp    fe_ex1
+rt2:       cmp    &llimit,r10
+           jge    calnf
+           jmp    fe_ex1
+            
+
+calnf:    cmp     r10,&fbcd     ;test to see if bcd freq equals DFE frequency
+          jeq     fe_ex         ;if it is, complete 
+          jhs     aj_dn         ;test for same or higher to determine tuning direction
+          br      #tnok         ;lower so tune up
+  
+aj_dn:    br      #tdok         ;higher so tune down
+ 
+fe_ex1:   mov     #01900h,r14
+          call    #mrsout 
+fe_ex:    bic     #FL_DFE,&flags ;clear DFE mode flag
+          call    #bindiv       ;go calculate new operating frequency
+          call    #offset       ;go calculate the offset and up date DDS
+          mov.b   #LED_BLANK
+          bic     #FLB_KEEPMUTE,&bflag
+          bis.b   #PO_MUTE
+          br      #wait1
+;          jmp    mfrqout       ;go output the frequency in morse
+  
+;************************************************
+; Convert BCD encoded frequency to binary encoded
+; input: uart_data0, uart_data1
+; output: fbc_l, fbc_h, fbcd, FL_50HZ
+; example of the serial byte stream received for 98.765432MHz
+; 32h 54h 76h 98h
+; this will be stored in uart_data0 and uart_data1 in the following format:
+; uart_data0 - 5432h
+; uart_data1 - 9876h
+decode_bcdfreq:
+          bic   #FL_50HZ, &flags      ; clear the 50hz flag
+          mov   &uart_data0, r8
+          bic   #0ff00h, r8
+          bic   #000ffh, &uart_data0  ; clear the last two BCD digits
+          cmp   #4fh, r8
+          jn    dcdbcdf1
+          bis   #FL_50HZ, &flags      ; set the 50Hz flag only if the last byte >= 50Hz
+          bis   #00050h, &uart_data0  ; add 50Hz to the BCD frequency
+dcdbcdf1: mov   &uart_data0, r8
+          mov   &uart_data1, r9
+          mov   #08h, r10             ; shift 100Hz to the right
+          bis   #1000h, r9
+dcdbcdf2: rra   r9
+          rrc   r8
+          dec   r10
+          jnz    dcdbcdf2
+          mov   r8, &fbcd             ; store kilohertzes into fbcd in BCD format
+
+          clr   r12                   ; clear output of the calculation
+          clr   r13
+          mov   &uart_data1, r8       ; convert lower 4 digits
+          mov   #4, r9                ; loop counter, 4 digits
+          call  #bcd2bin32
+          mov   &uart_data0, r8       ; convert upper 4 digits
+          mov   #4, r9                ; loop counter, 4 digits
+          call  #bcd2bin32mult10
+          ret
+
+; Convert r9 BCD digits from r8 to binary word stored in r12 r13.
+; Destroys r10, r14, r15.
+; Uses Horner schema.
+bcd2bin32:  clr   r10
+            rla   r8                    ; shift left digit into r10
+            rlc   r10
+            rla   r8
+            rlc   r10
+            rla   r8
+            rlc   r10
+            rla   r8
+            rlc   r10
+            add   r10, r12
+            adc   r13
+            dec   r9                    ; loop counter, through?
+            jz    bcd2bine              ; yes
+bcd2bin32mult10:
+            rla   r12                   ; output_value *= 2
+            rlc   r13
+            mov   r12, r14              ; temp = output_value *2
+            mov   r13, r15
+            rla   r12                   ; output_value *= 4
+            rlc   r13
+            rla   r12
+            rlc   r13
+            add   r14, r12
+            addc  r15, r13
+            jmp   bcd2bin32
+bcd2bine:   ret
+
+  
+  
+        
+;************************************************************
+;calculate DDS phase word from operating frequency in binary
+;phase word = frequency x 2^28 / reference frequency 
+;*************************************************************        
+        
+        
+bindiv:   
+          mov     &fbc_l,r9
+          mov     &fbc_h,r10
+bindiv2:  clr     r7
+          clr     r8
+          clr     r11
+          clr     r12
+          mov     &fref_l,r13
+          mov     &fref_h,r14
+          mov     #65,r15
+          clrc
+          
+;**************************************
+;shift bit bit nibble of four registers to right
+;***************************************          
+         
+         call     #rotr
+         call     #rotr
+         call     #rotr
+         call     #rotr
+         clrc
+          
+;***********************************************
+;64 bit divide routine
+;************************************************          
+
+d28_1:    rlc     r7
+          rlc     r8
+          rlc     r9
+          rlc     r10
+          push    sr
+          dec     r15
+          jnz     d28_2
+          pop     sr
+          mov     r7,&fbin_l
+          mov     r8,&fbin_h
+          ret    
+        
+d28_2:    pop     sr
+          rlc     r11
+          rlc     r12
+          sub     r13,r11
+          subc    r14,r12
+          jc      d28_3
+          add     r13,r11
+          addc    r14,r12
+          clrc  
+          jmp     d28_1
+d28_3:    setc                         
+          jmp     d28_1
+          
+          
+rotr:     rrc     r10
+          rrc     r9
+          rrc     r8
+          rrc     r7
+          ret         
+          
+        
+;************************************************
+;DDS reference frequency calibration routines
+;************************************************        
+rev_ext:  br      #rst2
+calref:   mov.b   #LED_C
+          mov     #01a00h,r14
+          call    #mrsout
+          mov     #01200h,r14
+          call    #mrsout
+          mov.b   #08dh,&P3OUT
+          
+;60MHz       
+          mov     #08700h,&fref_l
+          mov     #0393h,&fref_h
+         
+             
+          mov     #09680h,&fbc_l
+          mov     #0098h,&fbc_h
+          call    #bindiv
+          bic.b   #PO_MUTE  ;mute
+          call    #txdds
+          mov     #02838h,r15
+          call    #out16 
+       
+cfw:      bit.b   #PI_TUNEUP
+          jnc     cfw
+
+        
+cfwait:   bit.b   #PI_TUNEUP
+          jnc     cfdn
+          bit.b   #PI_TUNEDN
+          jnc     cfup
+          bit.b   #PI_MENU
+          jnc     adjoff 
+          jmp     cfwait
+        
+cfup:     mov     &fref_l,r14
+          mov     &fref_h,r15
+          add     #000ah,r14
+          addc    #0,r15
+          jmp     cfwait1
+        
+cfdn:     mov     &fref_l,r14
+          mov     &fref_h,r15
+          sub     #000ah,r14
+          subc    #0,r15
+        
+cfwait1:  mov     r14,&fref_l
+          mov     r15,&fref_h
+          call    #bindiv
+          call    #txdds
+          clr     r6
+cfdly:    cmp     #012ch,r6
+          jne     cfdly
+          jmp     cfwait
+         
+;**************************************************
+;calibrate IF offset frequency
+;*************************************************
+   
+adjoff:   mov     #01a00h,r14     ;outout "CO" in morse
+          call    #mrsout
+          mov     #0f00h,r14
+          call    #mrsout
+          mov.b   #08dh,&P3OUT
+          
+ad_lp:    bit.b   #PI_MENU        ;test for button release
+          jnc     ad_lp  
+          
+;60Mhz          
+          mov     #0829bh,&fbin_l  ;load default IF offset
+          mov     #014fh,&fbin_h
+          
+          
+          bis.b   #PO_MUTE          ;un-mute receiver
+          call    #txdds            ;load IF offset into DDS
+          mov     #02800h,r15       ;enable DDS transmit mode
+          call    #out16 
+                
+;***************************************************
+;switch input routine
+;***************************************************        
+        
+ofwait:   bit.b   #PI_TUNEUP
+          jnc     ofup
+          bit.b   #PI_TUNEDN
+          jnc     ofdn
+          bit.b   #PI_MENU
+          jnc     ofdone  
+          jmp     ofwait
+
+;***********************************************
+;incerment offset frequency up
+;***********************************************
+        
+ofup:     mov     &fbin_l,r14
+          mov     &fbin_h,r15
+          add     #0043h,r14
+          addc    #0,r15
+          jmp     ofwait1
+        
+;***********************************************
+;incerment offset frequency down
+;***********************************************        
+        
+ofdn:     mov     &fbin_l,r14
+          mov     &fbin_h,r15
+          sub     #0043h,r14
+          subc    #0,r15
+
+;********************************************
+;output new offset frequency
+;*******************************************
+        
+ofwait1:  mov     r14,&fbin_l
+          mov     r15,&fbin_h
+          call    #txdds
+          
+          clr     r6
+ofdly:    cmp     #012ch,r6   ;short delay
+          jne     ofdly
+          jmp     ofwait      ;jump back to switch input routine
+        
+;***********************************************
+;finish calibartion
+;**********************************************        
+        
+ofdone:   mov     &fbin_l,&ofst_l
+          mov     &fbin_h,&ofst_h
+          call    #wrsup
+          mov.b   #LED_BLANK
+          br      #rst3     ;restart program
+        
+;*****************************************
+;store user preferences into flash
+;****************************************** 
+ 
+ 
+wrsup:    push    &bflag
+          bic     #0807fh,&bflag
+          call    #cl_fl0         ;clear the information flash block 1
+          mov     #flash_fref,r13 ;load flash memory pointer
+          mov     #fref_l,r12     ;load ram pointer
+su_lp2:   mov     @r12+,r14       ;mov ram data to flash data write temp register
+          call    #wr_flsh        ;write the data to flash
+          incd    r13             ;incerment memory pointer
+          cmp     #bflag+2,r12    ;test for last of ram location to be written
+          jne     su_lp2
+          pop     &bflag
+          bis.b   #PO_MUTE        ;mute
+          ret
+ ;***************************************************
+;write to flash information blocks
+;***************************************************
+
+wr_flsh:  dint
+          mov     #FWKEY+FSSEL0+FN3+FN2+FN0,&FCTL2
+          mov     #FWKEY,&FCTL3
+          MOV     #FWKEY+WRT,&FCTL1
+          mov     r14,0(r13)
+          mov     #FWKEY,&FCTL1
+          MOV     #FWKEY+LOCK,&FCTL3
+          eint
+          ret
+
+;***************************************************
+;clear flash information blocks
+;****************************************************
+cl_flsh:  dint
+          mov     #FWKEY+FSSEL0+FN3+FN2+FN0,&FCTL2
+          mov     #FWKEY,&FCTL3
+          MOV     #FWKEY+ERASE,&FCTL1
+          clr     &(flash_rammem)
+          mov     #FWKEY+LOCK,&FCTL3
+          eint
+          ret   
+          
+cl_fl0:   dint
+          mov     #FWKEY+FSSEL0+FN3+FN2+FN0,&FCTL2
+          mov     #FWKEY,&FCTL3
+          MOV     #FWKEY+ERASE,&FCTL1
+          clr     &01080h
+          mov     #FWKEY+LOCK,&FCTL3
+          eint
+          ret  
+          
+  END               
+ 
