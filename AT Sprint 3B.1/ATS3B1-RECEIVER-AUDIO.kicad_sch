@@ -2590,7 +2590,7 @@
     (property "Value" "30p" (id 1) (at 161.0614 49.8352 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_Trimmer_Murata_TZB4-A" (id 2) (at 158.75 48.26 0)
+    (property "Footprint" "CraftsmanICs:C_TRIMMER_TZ03" (id 2) (at 158.75 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 158.75 48.26 0)
