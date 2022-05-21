@@ -955,7 +955,7 @@
     (property "Value" "C_Trim" (id 1) (at 125.3236 86.1818 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (property "Footprint" "Capacitor_SMD:C_Trimmer_Murata_TZB4-B" (id 2) (at 128.27 87.63 0)
+    (property "Footprint" "CraftsmanICs:C_TRIMMER_TZ03" (id 2) (at 128.27 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 128.27 87.63 0)
@@ -1026,7 +1026,7 @@
     (property "Value" "C_Trim" (id 1) (at 165.5064 89.0782 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (property "Footprint" "Capacitor_SMD:C_Trimmer_Murata_TZB4-B" (id 2) (at 162.56 87.63 0)
+    (property "Footprint" "CraftsmanICs:C_TRIMMER_TZ03" (id 2) (at 162.56 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 162.56 87.63 0)
@@ -1395,10 +1395,10 @@
       (reference "CF7") (unit 1) (value "C") (footprint "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm")
     )
     (path "/3f76b758-ce0d-4bdf-8d2c-1ec5e7229293"
-      (reference "CT2") (unit 1) (value "C_Trim") (footprint "Capacitor_SMD:C_Trimmer_Murata_TZB4-B")
+      (reference "CT2") (unit 1) (value "C_Trim") (footprint "CraftsmanICs:C_TRIMMER_TZ03")
     )
     (path "/2bd2e632-2d2b-476e-8ce0-14392f561a5b"
-      (reference "CT3") (unit 1) (value "C_Trim") (footprint "Capacitor_SMD:C_Trimmer_Murata_TZB4-B")
+      (reference "CT3") (unit 1) (value "C_Trim") (footprint "CraftsmanICs:C_TRIMMER_TZ03")
     )
     (path "/06de6ccc-0cbe-4f34-b2b1-edbec12fd9c3"
       (reference "JF1") (unit 1) (value "Filter Board Connector") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical")
