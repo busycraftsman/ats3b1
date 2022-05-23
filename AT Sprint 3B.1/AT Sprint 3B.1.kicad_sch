@@ -264,7 +264,7 @@
       (reference "#PWR0169") (unit 1) (value "GNDREF") (footprint "")
     )
     (path "/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/096c731e-7772-4b0c-869e-1f35e95f48da"
-      (reference "#PWR?") (unit 1) (value "GNDREF") (footprint "")
+      (reference "#PWR0170") (unit 1) (value "GNDREF") (footprint "")
     )
     (path "/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/9bd30889-2e10-4a78-98f9-14b3596d7647"
       (reference "C1") (unit 1) (value "22p") (footprint "Capacitor_SMD:C_0805_2012Metric")
