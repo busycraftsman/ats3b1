@@ -263,6 +263,9 @@
     (path "/90dc6760-adc3-4f45-bf52-7258232585f3/eeb57467-4a37-448f-a734-6d580b8dcf03"
       (reference "#PWR0169") (unit 1) (value "GNDREF") (footprint "")
     )
+    (path "/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/096c731e-7772-4b0c-869e-1f35e95f48da"
+      (reference "#PWR0170") (unit 1) (value "GNDREF") (footprint "")
+    )
     (path "/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/9bd30889-2e10-4a78-98f9-14b3596d7647"
       (reference "C1") (unit 1) (value "22p") (footprint "Capacitor_SMD:C_0805_2012Metric")
     )
@@ -441,7 +444,7 @@
       (reference "C59") (unit 1) (value ".1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
     (path "/7e4d3a90-cb56-4486-a66f-4c81b82cdabc/a128106d-aace-4f17-9dde-884e8bc568e0"
-      (reference "CT1") (unit 1) (value "30p") (footprint "Capacitor_SMD:C_Trimmer_Murata_TZB4-A")
+      (reference "CT1") (unit 1) (value "30p") (footprint "CraftsmanICs:C_TRIMMER_TZ03")
     )
     (path "/90dc6760-adc3-4f45-bf52-7258232585f3/8be7e101-6e05-4c6d-b126-52ec2f5ecd36"
       (reference "D1") (unit 1) (value "SS13") (footprint "Diode_SMD:D_SMA")
